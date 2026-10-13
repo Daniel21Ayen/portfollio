@@ -1089,49 +1089,7 @@ The system handles complex integrations with multiple external APIs and includes
         docs: null
       }
 },
-      {
-      id: 8,
-      title: 'Real-Time Chat Application',
-      type: 'fullstack',
-      featured: true,
-      date: '2023-11-20',
-      duration: '2 months',
-      teamSize: 2,
-      status: 'completed',
-      progress: 100,
-      shortDescription: 'Real-time messaging application with WebSocket implementation and media sharing.',
-      fullDescription: 'A real-time chat application built with React, Node.js, and Socket.io. Features include instant messaging, file sharing, user presence indicators, and message history.',
-      technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'JWT'],
-      features: [
-        'Real-time messaging',
-        'File and image sharing',
-        'User presence indicators',
-        'Message history',
-        'Private and group chats'
-      ],
-      images: ['https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&auto=format&fit=crop'],
-      video: null,
-      links: {
-        github: 'https://github.com',
-        demo: 'https://text-to-speech-converter-ivory.vercel.app/',
-        docs: null
-      },
-      stats: {
-        stars: 32,
-        forks: 8,
-        views: 890,
-        linesOfCode: 8000,
-        commits: 98,
-        branches: 5
-      },
-      challenges: [
-        {
-          title: 'Scalability for concurrent users',
-          solution: 'Implemented Redis for session management and message queuing'
-        }
-      ],
-      complexity: 'medium'
-    },
+   
 
 
     // {
@@ -1211,7 +1169,641 @@ The system handles complex integrations with multiple external APIs and includes
     // },
   
   
-  
+  {
+  id: 9,
+  title: 'Mastara (mh) - Academic Learning Platform',
+  type: 'fullstack',
+  featured: true,
+  date: '2026-10-06',
+  duration: '36 weeks',
+  teamSize: 8,
+  status: 'in-progress',
+  progress: 45,
+  shortDescription: 'A paid, bilingual, offline-first academic platform for Ethiopian university freshmen with device binding, entitlement-based access, and admin-managed content.',
+  fullDescription: 'Mastara (mh) is a comprehensive paid, bilingual (English + Amharic), offline-first academic platform designed specifically for Ethiopian university freshmen. Students authenticate, bind one physical device, select their University → Program → Semester, and access learning content organized by Course → Material/Tests/Exams, with COC Exam preparation available from Home. Access is entitlement-based with automatic expiry managed by Admin. The platform features manual payment verification (CBE Mobile Banking, CBE Birr, Telebirr), offline-first learning with zero answer loss, bilingual STEM/LaTeX rendering, and a complete Admin scanning-to-PDF workflow. The production app targets < 50 MB package size.',
+  technologies: [
+    'React Native',
+    'NestJS',
+    'PostgreSQL',
+    'Redis',
+    'TypeScript',
+    'SQLite',
+    'Object Storage',
+    'KaTeX',
+    'NotoSansEthiopic',
+    'Android Keystore',
+    'iOS Keychain',
+    'UUIDv7',
+    'JWT',
+    'NetInfo',
+    'WebP',
+    'JPEG',
+    'LaTeX'
+  ],
+  features: [
+    'Bilingual support (English + Amharic)',
+    'Offline-first learning with zero answer loss',
+    'One student account = one bound physical device',
+    'Secure device ID from Android Keystore / iOS Keychain',
+    'University → Program → Semester → Course hierarchy',
+    'Course content: Material, Tests, Exams',
+    'Material: Modules, Notes, Amharic Note',
+    'Tests: Practice & Quiz 1, Quiz 2, Quiz 3',
+    'Exams: Mid, Final, Mock Exam',
+    'COC Exam available from Home',
+    'Entitlement-based access with Admin-managed duration',
+    'Automatic expiry and content locking',
+    'Promotional unpaid courses for advertising',
+    'Manual payment proof with screenshot upload',
+    'Payment methods: CBE Mobile Banking, CBE Birr, Telebirr',
+    'Receipt compression below 300 KB',
+    'Unique transaction reference enforcement',
+    'Admin payment verification queue',
+    'Admin image scanning and image-to-PDF conversion',
+    'PDF publishing with entitlement protection',
+    'Offline answer persistence to encrypted SQLite',
+    'UUIDv7 outbox for sync operations',
+    'Monotonic timer for exams (immune to clock changes)',
+    'Immediate feedback for practice/quiz',
+    'Exam attempt lifecycle with recovery',
+    'Idempotent submission',
+    'Bilingual STEM/LaTeX rendering offline',
+    'Chapter-by-chapter download for large assets',
+    'Learning status and progress tracking',
+    'Payment alerts and store status on Home',
+    'Push notifications for payment/expiry/device events',
+    'Support ticket system',
+    'Audit logging for sensitive operations',
+    'Admin dashboard with full platform control',
+    'Student management with search/suspend',
+    'Academic catalog management',
+    'Content versioning and publishing workflow',
+    'Assessment management with versioning',
+    'Entitlement and duration management',
+    'Device binding inspection and revocation',
+    'Reports and operational analytics',
+    'Role-based access control (STUDENT, ADMIN)',
+    'Rate limiting for sensitive APIs',
+    'TLS for all network traffic',
+    'Encrypted local storage',
+    'Server-side entitlement enforcement',
+    'App package size < 50 MB (hard release gate)',
+    'Runtime memory target < 120 MB on 2-3 GB RAM devices'
+  ],
+  images: [
+    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&auto=format&fit=crop'
+  ],
+  stats: {
+    stars: 34,
+    forks: 8,
+    views: 890,
+    linesOfCode: 62000,
+    commits: 478,
+    branches: 12,
+    contributors: 8,
+    openIssues: 31,
+    closedIssues: 256,
+    pullRequests: 142,
+    testCoverage: 82
+  },
+  challenges: [
+    {
+      title: 'One-device binding enforcement',
+      solution: 'Implemented secure device ID from Android Keystore/iOS Keychain, server-side binding validation, and 403 DEVICE_MISMATCH_LOCKED response with localized recovery guidance'
+    },
+    {
+      title: 'Zero answer loss during offline learning',
+      solution: 'Built encrypted SQLite persistence with immediate write (< 10ms target), UUIDv7 outbox queue, NetInfo connectivity detection, and idempotent NestJS sync endpoint'
+    },
+    {
+      title: 'Monotonic exam timer integrity',
+      solution: 'Used Android SystemClock.elapsedRealtime() for elapsed time tracking, making exam duration immune to system wall-clock changes'
+    },
+    {
+      title: 'Bilingual STEM rendering offline',
+      solution: 'Bundled local KaTeX math fonts and NotoSansEthiopic, implemented inline/block LaTeX rendering without CDN dependency, and validated no clipping/baseline defects'
+    },
+    {
+      title: 'App size under 50 MB hard limit',
+      solution: 'Externalized all textbook chapters, scanned PDFs, and large content to object storage with on-demand download; CI artifact size report fails builds at or above 50 MB'
+    },
+    {
+      title: 'Automatic entitlement expiry enforcement',
+      solution: 'Server-authoritative expiry with client lock state refresh; client clocks and offline cache cannot extend access or bypass entitlement'
+    },
+    {
+      title: 'Unique transaction reference validation',
+      solution: 'Database UNIQUE constraint on transaction_reference with 409 TRANSACTION_REFERENCE_DUPLICATE error handling and Admin review queue'
+    },
+    {
+      title: 'Receipt image compression',
+      solution: 'Client-side compression to WebP/JPEG below 300 KB with 422 RECEIPT_TOO_LARGE rejection for oversized submissions'
+    },
+    {
+      title: 'Admin image-to-PDF conversion workflow',
+      solution: 'Built scanning/import pipeline with crop, rotate, reorder, PDF conversion, checksum generation, page count validation, and draft/review/publish states'
+    },
+    {
+      title: 'Exam state recovery after app kill',
+      solution: 'Implemented durable attempt lifecycle state machine (READY → STARTED → IN_PROGRESS → SUBMITTING → SUBMITTED → RESULT_AVAILABLE) with local recovery branch'
+    },
+    {
+      title: 'Payment proof verification workflow',
+      solution: 'Designed Admin queue with receipt inspection, student/product/reference verification, approve/reject with reason, entitlement activation, notification, and audit'
+    },
+    {
+      title: 'Offline content caching policy',
+      solution: 'Cached permitted content with entitlement validation, ensured offline cache cannot become permanent entitlement bypass, and sync status UI prevents false server sync claims'
+    }
+  ],
+  complexity: 'very-high',
+  architecture: {
+    pattern: 'Modular monolith with offline-first mobile and admin dashboard',
+    mobileModules: [
+      'app - Boot/navigation/providers',
+      'auth - Login/register/device',
+      'academic - University/program/semester',
+      'home - Continue/status/alerts/store',
+      'courses - Catalog/course tabs',
+      'material - Modules/notes/Amharic/reader',
+      'tests - Practice/Quiz 1/2/3',
+      'exams - Mid/Final/Mock/COC/timer',
+      'payments - Store/receipt/status',
+      'profile - Settings/device release/support',
+      'local - SQLite/cache/outbox',
+      'remote - API/auth/device headers',
+      'shared - UI/i18n/design system'
+    ],
+    backendModules: [
+      'AuthModule - Registration/login/session',
+      'DeviceModule - Binding/release/mismatch',
+      'AcademicModule - University/program/semester/course',
+      'ContentModule - Modules/topics/notes/versions',
+      'DocumentModule - Scan/images/PDF conversion',
+      'AssessmentModule - Questions/tests/exams',
+      'CocModule - COC catalog/exams',
+      'PaymentModule - Products/proofs/references',
+      'EntitlementModule - Access/duration/expiry',
+      'SyncModule - Offline operations',
+      'NotificationModule - Alerts',
+      'AdminModule - Admin orchestration',
+      'AuditModule - Audit trail'
+    ],
+    dataStores: {
+      postgresql: 'Authoritative relational state',
+      redis: 'Caching/queues',
+      objectStorage: 'Receipt images, PDFs, large learning assets',
+      encryptedSQLite: 'Mobile offline state'
+    }
+  },
+  roles: [
+    {
+      name: 'Student',
+      capabilities: [
+        'Register/login with secure session',
+        'Bind one physical device',
+        'Select University → Program → Semester',
+        'Access Home dashboard with learning status',
+        'Browse course catalog (paid and promotional)',
+        'Read Modules, Notes, Amharic Note',
+        'Take Practice & Quiz 1/2/3 with immediate feedback',
+        'Take Mid/Final/Mock exams with monotonic timer',
+        'Access COC Exam from Home',
+        'Pay via manual proof upload',
+        'Monitor access/expiry status',
+        'Manage own session/device release',
+        'Receive notifications for payment/expiry',
+        'Create support tickets',
+        'Continue Learning from last position'
+      ]
+    },
+    {
+      name: 'Admin',
+      capabilities: [
+        'Control students (search/view/suspend)',
+        'Manage academic catalog (universities/programs/semesters/courses)',
+        'Manage content (modules/topics/notes/Amharic/PDF)',
+        'Manage assessments (quizzes/exams/COC/questions)',
+        'Review payment receipts and references',
+        'Approve/reject payments with reason',
+        'Manage product durations and entitlements',
+        'Scan/import images and convert to PDF',
+        'Publish/unpublish content and PDFs',
+        'Inspect/revoke device bindings',
+        'Send notifications and manage support',
+        'View audit logs and operational reports',
+        'Configure system settings',
+        'Manage access expiry rules'
+      ]
+    }
+  ],
+  workflows: {
+    entryFlow: [
+      'Install (< 50 MB target)',
+      'Splash (load config, secure device ID, local DB, session)',
+      'Login/Register',
+      'Device Registration (if unbound)',
+      'Universities',
+      'Program',
+      'Semester',
+      'Home'
+    ],
+    homeSections: [
+      'Continue Learning - Resume last permitted topic/test',
+      'Courses - Entitled and promotional catalog',
+      'COC Exam - Direct COC destination',
+      'Learning Status - Progress/completion/sync status',
+      'Payment Alerts - Pending/rejected/expiring/expired notices',
+      'Store Status - Purchased, pending, expired, promotional states'
+    ],
+    courseFlow: {
+      material: [
+        'Course → Material → Modules → Topic/Chapter → Check lock → Read',
+        'Course → Material → Notes → Topic/Chapter → Check lock → Read',
+        'Course → Material → Amharic Note → Topic/Chapter → Check lock → Read'
+      ],
+      tests: [
+        'Course → Tests → Practice & Quiz 1 | Quiz 2 | Quiz 3',
+        'Topic → Content lock → Practice → Question → Answer → Immediate feedback → Next → Completion summary'
+      ],
+      exams: [
+        'Course → Exams → Mid | Final | Mock Exam',
+        'Click → Check content lock → All Questions → Click answer → Save → Navigate → Submit → Result/status'
+      ]
+    },
+    cocExam: [
+      'Home → COC Exam → Check content lock → COC list → Select exam → All Questions → Answer → Submit → Result/status'
+    ],
+    paymentFlow: [
+      'Store → Select product → Payment instructions/admin account',
+      'Student pays → Import screenshot → Compress below 300 KB',
+      'Enter transaction reference → Submit → Admin queue',
+      'Admin approve/reject → Entitlement activation'
+    ],
+    durationWorkflow: [
+      'Admin defines duration',
+      'Approved payment creates entitlement with start/end',
+      'Access remains active until end',
+      'Expiry reached → server returns expired',
+      'Client refreshes lock state → protected content locked',
+      'Renewal available'
+    ],
+    adminScanToPdf: [
+      'Admin Login → Content Management → Scan/Import',
+      'Capture/select images → Preview/Crop/Rotate/Reorder',
+      'Convert to PDF → Validate → Metadata',
+      'Save Draft → Review → Publish'
+    ],
+    deviceSecurity: {
+      firstDevice: 'Bind account',
+      sameDevice: 'Allow',
+      secondPhone: '403 DEVICE_MISMATCH_LOCKED',
+      releaseOriginal: 'Binding revoked after explicit Release Device & Log Out',
+      revokedDevice: '403 DEVICE_REVOKED'
+    },
+    offlineFlow: [
+      'User action → local validation',
+      'SQLite write → UI confirmation',
+      'UUIDv7 outbox → NetInfo detects connectivity',
+      'NestJS sync → acknowledgement → mark complete'
+    ]
+  },
+  statusModels: {
+    exam: ['READY', 'STARTED', 'IN_PROGRESS', 'SUBMITTING', 'SUBMITTED', 'RESULT_AVAILABLE'],
+    course: ['Draft', 'Promotional/Unpaid', 'Published', 'Paid/Entitled', 'Expiring', 'Expired/Archived'],
+    content: ['Draft', 'Review', 'Published Version', 'Updated Version', 'Archived'],
+    payment: ['Uploaded', 'Pending Review', 'Approved', 'Rejected', 'Entitlement Active', 'No Access', 'Expiry/Renewal'],
+    pdf: ['Images', 'Scan Session', 'Converted PDF', 'Draft', 'Review', 'Published', 'Archived'],
+    student: ['Register', 'Active', 'Device Bound', 'Learning', 'Payment/Entitlement Changes', 'Support/Suspension', 'Audit']
+  },
+  accessMatrix: {
+    unpaid: {
+      courseCatalog: 'Browse/promotional',
+      material: 'Locked/preview',
+      tests: 'Locked/preview',
+      midFinalMock: 'Locked',
+      coc: 'Locked unless entitled',
+      store: 'Purchase',
+      learningStatus: 'Limited'
+    },
+    paidActive: {
+      courseCatalog: 'Browse/open',
+      material: 'Read',
+      tests: 'Practice',
+      midFinalMock: 'Start if entitled',
+      coc: 'Open if entitled',
+      store: 'Renew if needed',
+      learningStatus: 'Full'
+    },
+    expired: {
+      courseCatalog: 'Browse/renew',
+      material: 'Locked',
+      tests: 'Locked',
+      midFinalMock: 'Locked',
+      coc: 'Locked',
+      store: 'Renew',
+      learningStatus: 'Historical + expiry'
+    },
+    pending: {
+      courseCatalog: 'Browse/status',
+      material: 'Locked',
+      tests: 'Locked',
+      midFinalMock: 'Locked',
+      coc: 'Locked',
+      store: 'Await verification',
+      learningStatus: 'Payment state'
+    }
+  },
+  errorModel: {
+    '403_DEVICE_MISMATCH_LOCKED': 'Account is bound to another device',
+    '403_DEVICE_REVOKED': 'Device is revoked',
+    '403_ENTITLEMENT_REQUIRED': 'No active access',
+    '403_ENTITLEMENT_EXPIRED': 'Access duration ended',
+    '409_TRANSACTION_REFERENCE_DUPLICATE': 'Reference already used',
+    '409_SYNC_CONFLICT': 'Mutation conflict',
+    '422_RECEIPT_TOO_LARGE': 'Receipt exceeds policy',
+    '422_PDF_CONVERSION_FAILED': 'PDF conversion failed',
+    '401_UNAUTHORIZED': 'Authentication required/invalid',
+    '429_RATE_LIMITED': 'Too many requests',
+    '500_503_SERVER_UNAVAILABLE': 'Retryable server/dependency failure'
+  },
+  nonFunctional: {
+    'NFR-001': 'Application package < 50 MB; CI release gate fails at/above 50 MB',
+    'NFR-002': 'Runtime memory target < 120 MB on supported budget phones',
+    'NFR-003': 'Local write target < 10 ms for normal answer persistence',
+    'NFR-004': 'Permitted cached learning and local answers survive temporary connectivity loss',
+    'NFR-005': 'TLS, secure storage, RBAC, device lock and audit pass',
+    'NFR-006': 'English + Amharic critical UI flows',
+    'NFR-007': 'Offline bilingual LaTeX rendering',
+    'NFR-008': 'Readable typography, tap targets, labels',
+    'NFR-009': 'Large content remains external to app bundle',
+    'NFR-010': 'Errors, sync, payments, locks and conversion failures measurable'
+  },
+  functionalRequirements: {
+    identityDevice: [
+      'FR-001: Registration [P0]',
+      'FR-002: Login [P0]',
+      'FR-003: Session persistence [P0]',
+      'FR-004: Secure device ID [P0]',
+      'FR-005: One-device binding [P0]',
+      'FR-006: Release device [P0]',
+      'FR-007: Mismatch UI [P0]',
+      'FR-008: Admin device control [P0]',
+      'FR-009: Security audit [P1]'
+    ],
+    academicCatalog: [
+      'FR-010: University catalog [P0]',
+      'FR-011: Program catalog [P0]',
+      'FR-012: Semester catalog [P0]',
+      'FR-013: Course catalog [P0]',
+      'FR-014: Promotional unpaid state [P0]',
+      'FR-015: Course access scope [P0]',
+      'FR-016: Catalog ordering [P2]'
+    ],
+    contentDocuments: [
+      'FR-020: Modules [P0]',
+      'FR-021: Topics/chapters [P0]',
+      'FR-022: Notes [P0]',
+      'FR-023: Amharic Note [P0]',
+      'FR-024: Content versioning [P0]',
+      'FR-025: Scan/import images [P0]',
+      'FR-026: Image-to-PDF [P0]',
+      'FR-027: PDF publishing [P0]',
+      'FR-028: Promotional preview [P1]',
+      'FR-029: Content lock [P0]',
+      'FR-034: Bilingual STEM math [P0]'
+    ],
+    testsExamsCoc: [
+      'FR-030: Practice engine [P0]',
+      'FR-031: Quiz 1 [P0]',
+      'FR-032: Quiz 2 [P0]',
+      'FR-033: Quiz 3 [P0]',
+      'FR-035: Question engine [P0]',
+      'FR-036: Immediate feedback [P0]',
+      'FR-037: Mid [P0]',
+      'FR-038: Final [P0]',
+      'FR-039: Mock [P0]',
+      'FR-040: Zero-loss answers [P0]',
+      'FR-041: Attempt lifecycle [P0]',
+      'FR-042: Submission [P0]',
+      'FR-050: Monotonic timer [P0]',
+      'FR-051: COC hub [P0]',
+      'FR-052: COC content [P0]',
+      'FR-053: Past COC exams [P0]',
+      'FR-054: Results [P1]',
+      'FR-055: Question navigation [P0]',
+      'FR-056: Exam lock [P0]',
+      'FR-057: Exam integrity [P0]'
+    ],
+    paymentEntitlement: [
+      'FR-090: Store [P0]',
+      'FR-091: Payment instructions [P0]',
+      'FR-092: Receipt upload [P0]',
+      'FR-093: Receipt compression [P0]',
+      'FR-094: Transaction reference [P0]',
+      'FR-095: Unique reference [P0]',
+      'FR-096: Verification queue [P0]',
+      'FR-097: Entitlement activation [P0]',
+      'FR-098: Duration management [P0]',
+      'FR-099: Automatic expiry lock [P0]',
+      'FR-100: Renewal [P1]',
+      'FR-101: Payment alerts [P1]',
+      'FR-102: Entitlement audit [P0]'
+    ],
+    offlineSync: [
+      'FR-060: Offline cache [P1]',
+      'FR-061: Offline progress [P0]',
+      'FR-062: Outbox [P0]',
+      'FR-063: UUIDv7 [P0]',
+      'FR-064: Connectivity worker [P0]',
+      'FR-065: Sync API [P0]',
+      'FR-066: Conflict handling [P1]',
+      'FR-080: Zero answer loss [P0]',
+      'FR-081: Learning status [P0]',
+      'FR-082: Sync status [P1]'
+    ],
+    admin: [
+      'FR-110: Admin dashboard [P0]',
+      'FR-111: Student management [P0]',
+      'FR-112: Academic management [P0]',
+      'FR-113: Content management [P0]',
+      'FR-114: Assessment management [P0]',
+      'FR-115: Payment management [P0]',
+      'FR-116: Entitlement/duration [P0]',
+      'FR-117: Scan-to-PDF [P0]',
+      'FR-118: Notifications/support [P1]',
+      'FR-119: Audit/reporting [P0]'
+    ]
+  },
+  dataModel: {
+    Student: 'id; account status; bound_device_id',
+    DeviceBinding: 'student_id unique; device_id; status; timestamps',
+    University: 'Foreign-key academic hierarchy',
+    Program: 'Foreign-key academic hierarchy',
+    Semester: 'Foreign-key academic hierarchy',
+    Course: 'scope; promotional state; publication state',
+    Module: 'course/module parent; ordering',
+    Topic: 'course/module parent; ordering',
+    Content: 'type; version; publication state; bilingual representations',
+    DocumentAsset: 'storage key; mime; checksum; size; page count',
+    Question: 'question set, category, duration, version',
+    Exam: 'question set, category, duration, version',
+    PaymentProof: 'student, product, image, transaction_reference UNIQUE, status',
+    Product: 'scope, price, duration_days, promotional state',
+    Entitlement: 'student, product, starts_at, expires_at, status',
+    OutboxEvent: 'operation_id UUIDv7 UNIQUE; payload; state',
+    AuditLog: 'actor, action, target, timestamp, metadata'
+  },
+  notifications: {
+    receiptSubmitted: 'Payment proof received; waiting for verification',
+    approved: 'Access activated',
+    rejected: 'Receipt rejected with reason',
+    expiring: 'Access expires soon; renew',
+    expired: 'Protected content locked; renew',
+    deviceMismatch: 'Account is bound to another device',
+    syncPending: 'Local changes retained; sync pending',
+    newContent: 'New material available where applicable'
+  },
+  edgeCases: [
+    {
+      case: 'Unpaid course opened',
+      behavior: 'Promotional information; protected content locked'
+    },
+    {
+      case: 'Entitlement expires while app is open',
+      behavior: 'Refresh access and lock protected content once authoritative expiry is known'
+    },
+    {
+      case: 'Phone changed',
+      behavior: 'Second device blocked until binding release/admin recovery'
+    },
+    {
+      case: 'App killed during quiz',
+      behavior: 'Restore local answers'
+    },
+    {
+      case: 'Clock changed during exam',
+      behavior: 'Monotonic timer prevents extension'
+    },
+    {
+      case: 'Network lost after answer',
+      behavior: 'SQLite + outbox preserve answer'
+    },
+    {
+      case: 'Duplicate payment reference',
+      behavior: 'Database unique constraint rejects it'
+    },
+    {
+      case: 'PDF conversion failure',
+      behavior: 'Admin receives retryable error'
+    },
+    {
+      case: 'Very large PDF',
+      behavior: 'Stored externally; on-demand download'
+    },
+    {
+      case: 'Rejected receipt',
+      behavior: 'Reason shown; corrected resubmission allowed'
+    }
+  ],
+  implementationRoadmap: [
+    'Phase 0: SRS + UX baseline - Approved v1.3 and traceability',
+    'Phase 1: Foundation - RN shell, Admin Web, NestJS, PostgreSQL, CI',
+    'Phase 2: Identity/device - Auth + one-device enforcement',
+    'Phase 3: Academic - University → Program → Semester → Course',
+    'Phase 4: Content - Material, notes, Amharic, PDFs, reader',
+    'Phase 5: Assessment - Quiz 1/2/3, Mid/Final/Mock, COC',
+    'Phase 6: Commerce - Store, receipts, verification, entitlements',
+    'Phase 7: Offline - SQLite/outbox/sync',
+    'Phase 8: Admin - Full control plane + scan-to-PDF',
+    'Phase 9: Hardening - Security, memory, size, recovery, release gates'
+  ],
+  definitionOfDone: [
+    'Requirement ID is implemented and testable',
+    'UI happy/failure flow documented',
+    'Server authorization exists for protected actions',
+    'Financial/security database constraints exist',
+    'Offline behavior defined',
+    'Sensitive operations audited',
+    'Automated/manual QA passes',
+    'Production package is < 50 MB'
+  ],
+  acceptanceChecklist: [
+    'The production app is < 50 MB',
+    'Install → Splash → Login/Register → Device registration → Universities → Program → Semester → Home works',
+    'Home contains Continue Learning, Courses, COC Exam, Learning Status, Payment Alerts and Store Status',
+    'Course contains Material, Tests and Exams',
+    'Material contains Modules, Notes and Amharic Note',
+    'Tests contain Practice & Quiz 1, Quiz 2, Quiz 3',
+    'Exams contain Mid, Final, Mock Exam',
+    'Notes/Amharic Note follow Topic/Chapter → Lock → Read',
+    'Quiz follows Topic → Lock → Practice → Question → Answer → Immediate Feedback → Next',
+    'Mid/Final/Mock follow Click → Lock → All Questions → Answer → Submit',
+    'COC Exam is available from Home and respects entitlement',
+    'Unpaid courses advertise in the catalog while protected content remains locked',
+    'Paid content automatically locks after Admin-managed duration expires',
+    'Manual payment proof works and receipt images are below 300 KB',
+    'Transaction references are unique',
+    'Admin can approve/reject receipts and manage access duration',
+    'Admin can scan/import images and convert them to valid PDF files',
+    'One-device binding is enforced server-side',
+    'Offline answers survive connectivity loss',
+    'Exam timer uses monotonic elapsed time',
+    'Mixed Amharic/English STEM math renders offline',
+    'GPA is not implemented'
+  ],
+  glossary: {
+    Entitlement: 'Server-authorized access to a defined course/content scope for a defined period',
+    'Promotional/Unpaid Course': 'Visible for advertising/discovery while protected content is locked',
+    'Bound Device': 'The one physical device associated with a Student account',
+    'Transaction Reference': 'Identifier entered from a payment receipt',
+    'Payment Proof': 'Receipt image plus transaction reference and product/method',
+    Outbox: 'Local queue of unsynchronized mutations',
+    UUIDv7: 'Time-sortable unique operation identifier',
+    'Monotonic Clock': 'Elapsed-time source unaffected by wall-clock changes',
+    'COC Exam': 'COC preparation/exam content provided by Mastara',
+    'Content Version': 'Immutable published snapshot',
+    'Scan-to-PDF': 'Admin conversion of scanned/imported images into PDF',
+    'Content Lock': 'UI/server enforcement preventing unauthorized or expired access'
+  },
+  documentInfo: {
+    documentId: 'MASTARA-SRS-001',
+    version: '1.3 – Rebuild Baseline',
+    status: 'Implementation / Product Baseline',
+    date: '2026-10-06',
+    product: 'Mastara (mh)',
+    repository: 'Kewakibt-Enterprise-Platform/Mastara',
+    primaryClient: 'React Native mobile app',
+    adminPlatform: 'Desktop/Web dashboard',
+    backend: 'NestJS + PostgreSQL + Redis + Object Storage',
+    roles: ['STUDENT', 'ADMIN'],
+    currency: 'ETB',
+    languages: ['English', 'Amharic'],
+    appPackageTarget: '< 50 MB'
+  },
+  securityPrivacy: [
+    'TLS for all network traffic',
+    'Secure token storage',
+    'Server-side entitlement enforcement',
+    'Server-side ADMIN authorization',
+    'Audit payment approvals, duration changes, device actions, content publishing and PDF publishing',
+    'Encrypt sensitive local storage',
+    'Rate-limit authentication/payment/sensitive APIs',
+    'Protect object-storage assets with authorized access controls',
+    'Prevent second-device bypass via client manipulation'
+  ],
+  contentProtection: {
+    mathRendering: 'Bundle local KaTeX math fonts and NotoSansEthiopic; inline and block LaTeX; no remote CDN dependency',
+    largeAssets: 'Chapter-by-chapter download; never monolithic bundle',
+    scannedPdfs: 'Object storage/on-demand download',
+    images: 'Compress/resize; no oversized bundled catalogs',
+    dependencies: 'Size-impact review; remove unused modules',
+    ci: 'Artifact size report and fail if ≥ 50 MB'
+  }
+}
 
  
 
