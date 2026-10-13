@@ -103,11 +103,6 @@ const Skills = () => {
             transition={{ duration: 0.8 }}
             className={styles.heroContent}
           >
-            <div className="hero-badge">
-              <FaCode />
-              <span>Technical Expertise</span>
-            </div>
-
             <h1 className={styles.heroTitle}>
               My <span className="highlight">Technology</span> Toolkit
             </h1>
@@ -341,6 +336,6 @@ const Skills = () => {
       </section>
     </div>
   );
-};
+}; 
 
 export default Skills;

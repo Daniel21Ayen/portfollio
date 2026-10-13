@@ -152,11 +152,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkjoqpjn';
             transition={{ duration: 0.8 }}
             className={styles.heroContent}
           >
-            <div className="hero-badge">
-              <FaEnvelope />
-              <span>Get In Touch</span>
-            </div>
-
+        
             <h1 className={styles.heroTitle}>
               Let's <span className="highlight">Connect</span> & Create Together
             </h1>
