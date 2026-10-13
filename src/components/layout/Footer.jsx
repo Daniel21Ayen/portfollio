@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           <div className={styles.contactItem}>
             <FaPhone />
-            <a href="tel:+251938803929">+251 912 345 678</a>
+            <a href="tel:+251938803929">+251 938 803 929</a>
           </div>
           <div className={styles.contactItem}>
             <FaMapMarkerAlt />
