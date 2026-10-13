@@ -5,6 +5,7 @@ import {
   FaLightbulb, FaFileDownload, FaEye
 } from 'react-icons/fa';
 import ScrollNavigationIndicators from '../components/common/ScrollNavigationIndicators';
+import { downloadResumePdf, viewResumePdf } from '../utils/resume';
 import styles from './About.module.css';
 import profilePic from '../assets/Images/8mg/about-pro.png';
 
@@ -168,27 +169,26 @@ const About = () => {
               Available in PDF format for easy viewing and printing.
             </p>
             <div className={styles.resumeActions}>
-              <motion.a
+              <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/Resume.pdf"
-                download="Daniel_Resume.pdf"
+                onClick={downloadResumePdf}
                 className={styles.resumeDownloadBtn}
               >
                 <FaFileDownload />
                 <span>Download PDF</span>
-              </motion.a>
-              <motion.a
+              </motion.button>
+              <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={viewResumePdf}
                 className={styles.resumeViewBtn}
               >
                 <FaEye />
                 <span>View Online</span>
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
         </div>

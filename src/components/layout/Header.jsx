@@ -68,18 +68,21 @@ const Header = () => {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }
+    const theme = savedTheme === 'light' ? 'light' : 'dark'; // dark by default
+    setDarkMode(theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
   }, []);
 
+  // Logo click: go home (and to the top)
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (location.pathname !== '/') {
       navigate('/');
     }
   };
+
+  // Back-to-top button: only scrolls, stays on the current page
+  const backToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const navigateToSection = (path) => {
     if (location.pathname === path) {
@@ -352,15 +355,6 @@ const Header = () => {
           )}
         </AnimatePresence>
 
-        {/* Progress Indicator */}
-        <motion.div 
-          className={styles.scrollProgress}
-          initial={{ scaleX: 0 }}
-          animate={{ 
-            scaleX: (window.scrollY / (document.body.scrollHeight - window.innerHeight)) || 0 
-          }}
-          transition={{ type: 'spring', stiffness: 100, damping: 30 }}
-        />
       </motion.header>
 
       {/* Notification Toast */}
@@ -390,7 +384,7 @@ const Header = () => {
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.9 }}
             className={styles.scrollTopBtn}
-            onClick={scrollToTop}
+            onClick={backToTop}
             aria-label="Scroll to top"
           >
             <FaArrowUp />
