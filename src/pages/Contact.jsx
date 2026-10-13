@@ -38,7 +38,7 @@ const Contact = () => {
       id: 'email',
       label: 'Email',
       icon: <FaEnvelope />,
-      value: 'daniel ayen21 12@gmai l.com',
+      value: 'danielayen2112@gmail.com',
       color: '#EA4335',
       action: 'mailto:danielayen2112@gmail.com'
     },
@@ -56,7 +56,7 @@ const Contact = () => {
       icon: <FaMapMarkerAlt />,
       value: 'Injibara University, Ethiopia',
       color: '#4285F4',
-      action: 'https://maps.google.com'
+      action: 'https://maps.google.com/?q=Injibara+University'
     },
     {
       id: 'hours',
@@ -75,31 +75,46 @@ const Contact = () => {
     }));
   };
 
+  // ===== REAL FORM SUBMISSION =====
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setFormStatus({
-        submitted: true,
-        success: true,
-        message: 'Thank you! Your message has been sent successfully.'
+      // Formspree endpoint — replace YOUR_FORM_ID with your actual form ID
+      // Sign up free at https://formspree.io → create form → get your ID
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkjoqpjn';
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _replyto: formData.email
+        })
       });
-      
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
+
+      if (response.ok) {
+        setFormStatus({
+          submitted: true,
+          success: true,
+          message: 'Thank you! Your message has been sent successfully. I will get back to you soon.'
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || 'Submission failed');
+      }
     } catch (err) {
       setFormStatus({
         submitted: true,
         success: false,
-        message: 'Sorry, there was an error sending your message. Please try again.'
+        message: 'Sorry, there was an error sending your message. Please try again or email me directly.'
       });
     } finally {
       setIsSubmitting(false);
@@ -111,7 +126,7 @@ const Contact = () => {
       if (contact.id === 'email') {
         window.location.href = contact.action;
       } else {
-        window.open(contact.action, '_blank');
+        window.open(contact.action, '_blank', 'noopener,noreferrer');
       }
     }
     setActiveContact(contact.id);
@@ -120,12 +135,8 @@ const Contact = () => {
   useEffect(() => {
     if (formStatus.submitted) {
       const timer = setTimeout(() => {
-        setFormStatus({
-          submitted: false,
-          success: false,
-          message: ''
-        });
-      }, 5000);
+        setFormStatus({ submitted: false, success: false, message: '' });
+      }, 6000);
       return () => clearTimeout(timer);
     }
   }, [formStatus.submitted]);
@@ -134,7 +145,7 @@ const Contact = () => {
     <div className={styles.page}>
       {/* Hero Section */}
       <section className={styles.hero}>
-        <div className="container">
+        <div className="container"> 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -145,11 +156,11 @@ const Contact = () => {
               <FaEnvelope />
               <span>Get In Touch</span>
             </div>
-            
+
             <h1 className={styles.heroTitle}>
               Let's <span className="highlight">Connect</span> & Create Together
             </h1>
-            
+
             <p className={styles.heroSubtitle}>
               Have a project in mind? Want to collaborate? Or just want to say hello?
               I'd love to hear from you!
@@ -278,8 +289,8 @@ const Contact = () => {
                   type="submit"
                   className={styles.submitBtn}
                   disabled={isSubmitting}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                 >
                   {isSubmitting ? (
                     <>
@@ -359,11 +370,11 @@ const Contact = () => {
 
                 <div className={styles.infoDivider}></div>
 
-                {/* Direct Contact Buttons */} 
+                {/* Direct Contact Buttons */}
                 <div className={styles.directContact}>
                   <a
                     href="https://wa.me/251938803929"
-                    target="_blank"  
+                    target="_blank"
                     rel="noopener noreferrer"
                     className={`${styles.directBtn} ${styles.whatsapp}`}
                   >
@@ -371,7 +382,7 @@ const Contact = () => {
                     Chat on WhatsApp
                   </a>
                   <a
-                    href="https://t.me/username"
+                    href="https://t.me/DanielAyen"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`${styles.directBtn} ${styles.telegram}`}
@@ -385,32 +396,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
-      {/* Map Section */}
-      <section className={styles.map}>
-        <div className="container">
-          <div className={styles.mapContainer}>
-            <div className={styles.mapPlaceholder}>
-              <div className={styles.mapOverlay}>
-                <h3>Based in Ethiopia</h3>
-                <p>Injibara University, Amhara Region</p>
-                <span className={styles.mapNote}>Available for remote work worldwide</span>
-              </div>
-              <div className={styles.mapFrame}>
-                <div className={styles.mapMock}>
-                  <div className={styles.mapMarker}>
-                    <FaMapMarkerAlt />
-                  </div>
-                  <h4>Injibara University</h4>
-                  <p>Software Engineering Department</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
-};  
+};
 
 export default Contact;

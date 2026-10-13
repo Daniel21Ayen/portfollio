@@ -5,7 +5,7 @@ import {FaArrowDown,FaRocket,FaCode,FaGithub,FaLinkedin,FaTwitter,FaCalendarAlt}
 import {SiReact,SiNodedotjs,SiTypescript,SiMongodb,SiTailwindcss} from 'react-icons/si';
 import styles from './Home.module.css';
 import profileImage from '../assets/Images/8mg/profiles.jpg';
-
+ 
 const Home = () => {
   const [currentTime, setCurrentTime] = useState('');
 

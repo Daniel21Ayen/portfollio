@@ -7,14 +7,14 @@ import {
   FaDatabase,
   FaMobileAlt,
   FaCloud,
-  FaToolbox, 
+  FaToolbox,
   FaLayerGroup,
   FaProjectDiagram,
   FaUsers,
   FaJava,
   FaCalendarAlt
 } from 'react-icons/fa';
-import {  
+import {
   SiReact,
   SiNodedotjs,
   SiTypescript,
@@ -29,13 +29,12 @@ import {
   SiFigma,
   SiTailwindcss,
   SiNextdotjs,
-  SiExpress, 
+  SiExpress,
   SiRedux
 } from 'react-icons/si';
 import styles from './Skills.module.css';
 
-const Skills = () => { 
- 
+const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
 
   const categories = [
@@ -57,27 +56,24 @@ const Skills = () => {
     { name: 'JavaScript', category: 'frontend', proficiency: 95, years: 4, projects: 10, icon: <FaCode />, color: '#F7DF1E', description: 'Expert in ES6+ features, asynchronous programming, and modern JavaScript patterns.' },
     { name: 'HTML/CSS', category: 'frontend', proficiency: 98, years: 5, projects: 10, icon: <FaLayerGroup />, color: '#E34F26', description: 'Semantic HTML5, advanced CSS3, Flexbox, Grid, and responsive design.' },
     { name: 'Tailwind CSS', category: 'frontend', proficiency: 88, years: 2, projects: 8, icon: <SiTailwindcss />, color: '#38B2AC', description: 'Utility-first CSS framework for rapid UI development.' },
-    // { name: 'Redux', category: 'frontend', proficiency: 85, years: 2, projects: 2, icon: <SiRedux />, color: '#764ABC', description: 'State management for complex React applications.' },
-    
+
     // Backend
     { name: 'Node.js', category: 'backend', proficiency: 92, years: 3, projects: 8, icon: <SiNodedotjs />, color: '#339933', description: 'Building scalable server-side applications and APIs.' },
     { name: 'Express', category: 'backend', proficiency: 90, years: 3, projects: 12, icon: <SiExpress />, color: '#000000', description: 'Minimalist web framework for Node.js applications.' },
     { name: 'Python', category: 'backend', proficiency: 80, years: 2, projects: 1, icon: <SiPython />, color: '#3776AB', description: 'Backend development, scripting, and data analysis.' },
     { name: 'Java', category: 'backend', proficiency: 75, years: 3, projects: 5, icon: <FaJava />, color: '#007396', description: 'Object-oriented programming and enterprise applications.' },
     { name: 'C++', category: 'backend', proficiency: 70, years: 2, projects: 1, icon: <SiCplusplus />, color: '#00599C', description: 'System programming and performance-critical applications.' },
-    
-    // { name: 'Java', category: 'mobile', proficiency: 75, years: 3, projects: 8, icon: <FaJava />, color: '#007396', description: 'Object-oriented programming and enterprise applications.' },
 
     // Database
     { name: 'MySQL', category: 'database', proficiency: 88, years: 3, projects: 12, icon: <SiMysql />, color: '#4479A1', description: 'Relational database design, optimization, and administration.' },
     { name: 'PostgreSQL', category: 'database', proficiency: 85, years: 2, projects: 9, icon: <SiPostgresql />, color: '#336791', description: 'Advanced SQL, transactions, and complex queries.' },
     { name: 'MongoDB', category: 'database', proficiency: 82, years: 2, projects: 7, icon: <SiMongodb />, color: '#47A248', description: 'NoSQL database for flexible document storage.' },
-    
+
     // DevOps & Tools
     { name: 'Docker', category: 'devops', proficiency: 78, years: 1, projects: 2, icon: <SiDocker />, color: '#2496ED', description: 'Containerization and deployment automation.' },
     { name: 'Git', category: 'tools', proficiency: 95, years: 2, projects: 20, icon: <SiGit />, color: '#F05032', description: 'Version control, branching strategies, and collaboration.' },
     { name: 'Jira', category: 'tools', proficiency: 85, years: 2, projects: 15, icon: <SiJira />, color: '#0052CC', description: 'Project management and agile development workflows.' },
-    
+
     // Design
     { name: 'Figma', category: 'design', proficiency: 80, years: 2, projects: 8, icon: <SiFigma />, color: '#F24E1E', description: 'UI/UX design, prototyping, and design systems.' },
   ], []);
@@ -89,7 +85,6 @@ const Skills = () => {
         const categorySkills = allSkills.filter(skill => skill.category === cat.id);
         stats[cat.id] = {
           count: categorySkills.length,
-          avgProficiency: Math.round(categorySkills.reduce((sum, skill) => sum + skill.proficiency, 0) / categorySkills.length) || 0,
           totalProjects: categorySkills.reduce((sum, skill) => sum + skill.projects, 0),
         };
       }
@@ -106,16 +101,19 @@ const Skills = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={styles.heroContent} 
+            className={styles.heroContent}
           >
-          
-            
+            <div className="hero-badge">
+              <FaCode />
+              <span>Technical Expertise</span>
+            </div>
+
             <h1 className={styles.heroTitle}>
               My <span className="highlight">Technology</span> Toolkit
             </h1>
-            
+
             <p className={styles.heroSubtitle}>
-              A comprehensive overview of my technical skills, proficiency levels, 
+              A comprehensive overview of my technical skills, proficiency levels,
               and hands-on experience with modern technologies.
             </p>
           </motion.div>
@@ -136,16 +134,25 @@ const Skills = () => {
             {categories
               .filter(cat => cat.id !== 'all')
               .map((category, index) => {
-                const stats = categoryStats[category.id] || { count: 0, avgProficiency: 0, totalProjects: 0 };
+                const stats = categoryStats[category.id] || { count: 0, totalProjects: 0 };
+                const avgYears = stats.count > 0
+                  ? Math.round(
+                      allSkills
+                        .filter(s => s.category === category.id)
+                        .reduce((sum, s) => sum + s.years, 0) / stats.count * 10
+                    ) / 10
+                  : 0;
+
                 return (
                   <motion.div
                     key={category.id}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.08 }}
                     className={styles.breakdownCard}
                     style={{ '--category-color': category.color }}
+                    data-empty={stats.count === 0}
                   >
                     <div className={styles.breakdownHeader}>
                       <div className={styles.categoryIcon} style={{ color: category.color }}>
@@ -156,23 +163,7 @@ const Skills = () => {
                         <span className={styles.skillCount}>{stats.count} skills</span>
                       </div>
                     </div>
-                    
-                    <div className={styles.breakdownProgress}>
-                      <div className={styles.progressInfo}>
-                        <span className={styles.progressLabel}>Average Proficiency</span>
-                        <span className={styles.progressValue}>{stats.avgProficiency}%</span>
-                      </div>
-                      <div className={styles.progressBar}>
-                        <motion.div
-                          className={styles.progressFill}
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${stats.avgProficiency}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: index * 0.2 }}
-                        />
-                      </div>
-                    </div>
-                    
+
                     <div className={styles.breakdownStats}>
                       <div className={styles.stat}>
                         <FaProjectDiagram />
@@ -184,27 +175,29 @@ const Skills = () => {
                       <div className={styles.stat}>
                         <FaCalendarAlt />
                         <div>
-                          <span className={styles.statValue}>
-                            {stats.count > 0 ? Math.round(allSkills
-                              .filter(s => s.category === category.id)
-                              .reduce((sum, s) => sum + s.years, 0) / stats.count * 10) / 10 : 0}
-                          </span>
+                          <span className={styles.statValue}>{avgYears}</span>
                           <span className={styles.statLabel}>Avg Years</span>
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className={styles.breakdownSkills}>
-                      {allSkills
-                        .filter(skill => skill.category === category.id)
-                        .slice(0, 3)
-                        .map(skill => (
-                          <span key={skill.name} className={styles.skillTag}>
-                            {skill.name}
-                          </span>
-                        ))}
-                      {stats.count > 3 && (
-                        <span className={styles.moreSkills}>+{stats.count - 3} more</span>
+                      {stats.count > 0 ? (
+                        <>
+                          {allSkills
+                            .filter(skill => skill.category === category.id)
+                            .slice(0, 3)
+                            .map(skill => (
+                              <span key={skill.name} className={styles.skillTag}>
+                                {skill.name}
+                              </span>
+                            ))}
+                          {stats.count > 3 && (
+                            <span className={styles.moreSkills}>+{stats.count - 3} more</span>
+                          )}
+                        </>
+                      ) : (
+                        <span className={styles.emptySkills}>No skills in this category yet</span>
                       )}
                     </div>
                   </motion.div>
@@ -213,7 +206,7 @@ const Skills = () => {
           </div>
         </div>
       </section>
- 
+
       {/* Interactive Skill Icons */}
       <section className={styles.interactive}>
         <div className="container">
@@ -231,7 +224,7 @@ const Skills = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -10 }}
                 className={styles.interactiveItem}
                 onClick={() => setActiveSkill(skill)}
@@ -276,7 +269,7 @@ const Skills = () => {
                   <span className={styles.modalCategory}>{activeSkill.category}</span>
                 </div>
               </div>
-              
+
               <button
                 className={styles.modalClose}
                 onClick={() => setActiveSkill(null)}
@@ -289,7 +282,7 @@ const Skills = () => {
             <div className={styles.modalContent}>
               <div className={styles.skillOverview}>
                 <p className={styles.overviewDescription}>{activeSkill.description}</p>
-                
+
                 <div className={styles.overviewStats}>
                   <div className={styles.overviewStat}>
                     <div className={styles.statValue}>{activeSkill.proficiency}%</div>
@@ -332,7 +325,7 @@ const Skills = () => {
           >
             <h2 className={styles.ctaTitle}>Ready to Leverage These Skills?</h2>
             <p className={styles.ctaDescription}>
-              I'm always excited to apply my technical expertise to new challenges 
+              I'm always excited to apply my technical expertise to new challenges
               and innovative projects.
             </p>
             <div className={styles.ctaActions}>
@@ -344,7 +337,7 @@ const Skills = () => {
               </a>
             </div>
           </motion.div>
-        </div>  
+        </div>
       </section>
     </div>
   );
