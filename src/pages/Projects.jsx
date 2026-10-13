@@ -66,7 +66,7 @@ const Projects = () => {
     images: ['https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop'],
     video: null,
     links: {
-      github: 'https://github.com/Enat-Ena-Liji/newselection',
+      github: 'https://github.com/Daniel21Ayen/newselection',
       demo: 'https://udas-demo.herokuapp.com',
       docs: 'https://github.com/Enat-Ena-Liji/newselection#readme'
     },
@@ -194,9 +194,9 @@ const Projects = () => {
   ],
   "video": null,
   "links": {
-    "github": "https://github.com/yourusername/global-banking-system",
+    "github": "https://github.com/Daniel21Ayen/global-banking-system",
     "demo": null,
-    "docs": "https://github.com/yourusername/global-banking-system#readme"
+    "docs": "https://github.com/Daniel21Ayen/global-banking-system#readme"
   },
   "stats": {
     "stars": 0,
@@ -436,9 +436,9 @@ The platform follows Stack Overflow-style conventions and provides an intuitive 
     images: ['https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=800&auto=format&fit=crop'],
     video: null,
     links: {
-      github: 'https://github.com/yourusername/abe-garage',
+      github: 'https://github.com/Daniel21Ayen/AbeGarageProject',
       demo: 'https://abe-garage.herokuapp.com',
-      docs: 'https://github.com/yourusername/abe-garage#readme'
+      docs: 'https://github.com/Daniel21Ayen/AbeGarageProject#readme'
     },
     stats: {
       stars: 0,
@@ -576,9 +576,9 @@ The system handles complex integrations with multiple external APIs and includes
   ],
   "video": null,
   "links": {
-    "github": "https://github.com/Enat-Ena-Liji/personal-ai-agent",
+    "github": "https://github.com/Daniel21Ayen/personal-ai-agent",
     "demo": "https://personal-ai-agent.vercel.app",
-    "docs": "https://github.com/Enat-Ena-Liji/personal-ai-agent#readme"
+    "docs": "https://github.com/Daniel21Ayen/personal-ai-agent#readme"
   },
   "stats": {
     "stars": 0,
@@ -671,7 +671,7 @@ The system handles complex integrations with multiple external APIs and includes
       ],
       images: ['https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&auto=format&fit=crop'],
        links: {
-        github: 'https://github.com',
+        github: 'https://github.com/Daniel21Ayen/weather-condition',
         demo: 'https://weather-condition-one.vercel.app',
         docs: null
       },
@@ -691,43 +691,404 @@ The system handles complex integrations with multiple external APIs and includes
       ],
       complexity: 'low'
     },
+   {
+  id: 8,
+  title: 'Transport Management System (TMS)',
+  type: 'fullstack',
+  featured: true,
+  date: '2026-10-04',
+  duration: '16 weeks',
+  teamSize: 6,
+  status: 'in-progress',
+  progress: 65,
+  shortDescription: 'Enterprise-grade transport management platform connecting customers, drivers, vendors, and administrators with end-to-end booking, trip execution, payment, and support workflows.',
+  fullDescription: 'A comprehensive Transport Management System (TMS) designed for the Ethiopian market (ETB-ready) that connects customers requesting passenger or item transportation with eligible drivers, vehicles, and vendors/suppliers. The platform provides request discovery, intelligent matching, booking, trip execution, item/load handling, real-time messaging, notifications, payments/wallets, reviews, support ticketing, reporting, and full administrative control across web, mobile, and admin applications.',
+  technologies: [
+    'React',
+    'React Native',
+    'Node.js',
+    'TypeScript',
+    'PostgreSQL',
+    'Express',
+    'Redis',
+    'Docker',
+    'Kubernetes',
+    'Nginx',
+    'JWT',
+    'Prisma',
+    'Socket.io',
+    'Jest',
+    'Cypress'
+  ],
+  features: [
+    'Multi-role authentication (Customer, Driver, Vendor, Admin, Public Visitor)',
+    'Passenger transport request lifecycle management',
+    'Item/load transport with pickup, transit, and delivery tracking',
+    'Intelligent matching engine with eligibility filtering and ranking',
+    'Booking creation, confirmation, and cancellation workflows',
+    'Trip execution with milestone tracking (Planned → Started → Arrived → Completed)',
+    'Order management for vendor/supplier operations',
+    'Inventory management with reservation and release rules',
+    'Fleet and vehicle management with document verification',
+    'Payment processing with provider callbacks and idempotency',
+    'Wallet system with ledger-backed balances and transactions',
+    'Refund and financial adjustment workflows',
+    'Real-time messaging between participants',
+    'Push, email, and SMS notification delivery',
+    'Support ticket system with SLA and escalation',
+    'Review and rating system with moderation',
+    'Reporting and KPI dashboards with export capabilities',
+    'Admin operations dashboard with full platform control',
+    'Role-based access control (RBAC) and ownership checks',
+    'Rate limiting and audit logging for sensitive operations',
+    'Background jobs for reconciliation, exports, and cleanup',
+    'Public landing pages and service discovery',
+    'Responsive UI with reusable component library',
+    'Accessibility compliance (keyboard navigation, focus management)',
+    'Data integrity with database constraints and transactions',
+    'Idempotent operations for financial and lifecycle transitions',
+    'Comprehensive audit trail for material actions'
+  ],
+  images: [
+    'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&auto=format&fit=crop'
+  ],
+  stats: {
+    stars: 47,
+    forks: 12,
+    views: 1240,
+    linesOfCode: 48500,
+    commits: 342,
+    branches: 8,
+    contributors: 6,
+    openIssues: 23,
+    closedIssues: 187,
+    pullRequests: 94,
+    testCoverage: 78
+  },
+  challenges: [
     {
-      id: 7,
-      title: 'Blog Platform API',
-      type: 'backend',
-      featured: false,
-      date: '2023-05-20',
-      duration: '2 weeks',
-      teamSize: 1,
-      status: 'completed',
-      progress: 100,
-      shortDescription: 'RESTful API for a blog platform with authentication and CRUD operations.',
-      fullDescription: 'A comprehensive RESTful API for a blog platform with authentication, CRUD operations, comment system, and admin panel.',
-      technologies: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-      features: [
-        'User authentication',
-        'CRUD operations',
-        'Comment system',
-        'Admin panel',
-        'Search functionality'
-      ],
-      images: ['https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop'],
-      stats: {
-        stars: 20,
-        forks: 3,
-        views: 380,
-        linesOfCode: 2800,
-        commits: 32,
-        branches: 2
-      },
-      challenges: [
-        {
-          title: 'Authentication security',
-          solution: 'Implemented JWT with refresh tokens and rate limiting'
-        }
-      ],
-      complexity: 'medium'
+      title: 'Concurrent booking conflicts',
+      solution: 'Implemented server-side availability revalidation with database-level locking and optimistic concurrency control to prevent double assignment'
     },
+    {
+      title: 'Payment idempotency and duplicate callbacks',
+      solution: 'Designed provider callback handler with signature verification, idempotency keys, and transaction state machine to ensure exactly-once processing'
+    },
+    {
+      title: 'Multi-role authorization complexity',
+      solution: 'Built centralized RBAC middleware with resource ownership checks, operational scope validation, and role-specific permission matrices'
+    },
+    {
+      title: 'Real-time location tracking at scale',
+      solution: 'Implemented WebSocket-based location updates with Redis pub/sub, geospatial indexing, and configurable tracking frequency'
+    },
+    {
+      title: 'Financial ledger consistency',
+      solution: 'Adopted double-entry ledger pattern with atomic transactions, immutable audit records, and reconciliation jobs for discrepancy detection'
+    },
+    {
+      title: 'Cross-platform mobile and web parity',
+      solution: 'Created shared TypeScript contracts in packages/types and reusable UI components in packages/ui to maintain consistency across apps'
+    },
+    {
+      title: 'Ethiopian market payment integration',
+      solution: 'Built provider adapter pattern supporting multiple local payment methods (Telebirr, CBE Birr, etc.) with unified internal transaction model'
+    },
+    {
+      title: 'Lifecycle state transition enforcement',
+      solution: 'Implemented state machine pattern per domain entity (Request, Booking, Trip, Load, Order) with server-side validation and audit logging'
+    }
+  ],
+  complexity: 'high',
+  architecture: {
+    pattern: 'Modular monolith with domain-driven design',
+    repositories: [
+      'apps/web - Customer, Driver, Vendor web experiences',
+      'apps/mobile - React Native driver operations',
+      'apps/admin - Desktop administration dashboard',
+      'backend/src/modules - Authoritative domain business rules',
+      'backend/src/middleware - Auth, validation, rate limiting',
+      'backend/src/database - Models, migrations, seed data',
+      'backend/src/jobs - Notifications, reconciliation, exports',
+      'packages/ui - Reusable UI component library',
+      'packages/types - Shared TypeScript contracts',
+      'packages/utils - Shared formatting utilities',
+      'packages/constants - Roles, permissions, statuses'
+    ]
+  },
+  roles: [
+    {
+      name: 'Customer',
+      capabilities: [
+        'Create transport requests (passenger/item)',
+        'Search and select matches/offers',
+        'Book and pay for services',
+        'Track trips and orders',
+        'Manage wallet and payments',
+        'Message participants',
+        'Submit reviews',
+        'Create support tickets'
+      ]
+    },
+    {
+      name: 'Driver',
+      capabilities: [
+        'Publish availability',
+        'Manage vehicles and documents',
+        'Discover available work',
+        'Accept bookings/loads',
+        'Execute trips with milestones',
+        'Manage earnings and wallet',
+        'Communicate with customers',
+        'View reviews and support'
+      ]
+    },
+    {
+      name: 'Vendor/Supplier',
+      capabilities: [
+        'Create and respond to requests',
+        'Submit and manage offers',
+        'Manage orders and inventory',
+        'View performance analytics',
+        'Message participants',
+        'Manage notifications'
+      ]
+    },
+    {
+      name: 'Admin/Operations',
+      capabilities: [
+        'View operational dashboard',
+        'Manage users, drivers, vendors, customers',
+        'Intervene in trips/bookings',
+        'Manage fleet and vehicles',
+        'Manage loads and orders',
+        'Manage payments and wallets',
+        'View reports and analytics',
+        'Moderate reviews',
+        'Manage support tickets',
+        'Configure system settings'
+      ]
+    },
+    {
+      name: 'Public Visitor',
+      capabilities: [
+        'View public landing pages',
+        'Access authentication entry points',
+        'View public service information',
+        'Search eligible services'
+      ]
+    }
+  ],
+  lifecycle: {
+    passengerTransport: [
+      'Request → Customer enters trip details',
+      'Matching → System finds eligible drivers/vehicles',
+      'Selection → Customer selects match/offer',
+      'Booking → Booking created and locked',
+      'Payment → Payment authorized and recorded',
+      'Trip → Driver progresses through milestones',
+      'Completion → Trip completes when conditions satisfied',
+      'Review → Eligible participants submit review',
+      'Support → Exceptions escalated through tickets'
+    ],
+    itemTransport: [
+      'Request/Load → Customer/vendor records item details',
+      'Matching/Offer → Eligible driver/vendor offers or matched',
+      'Order/Booking → Accepted option becomes order/booking',
+      'Pickup → Driver confirms pickup with proof',
+      'Transit → Load remains in transit with updates',
+      'Delivery → Driver confirms delivery with proof',
+      'Completion → Order/load closes after conditions met',
+      'Review/Support → Participants review or open ticket'
+    ]
+  },
+  statusModels: {
+    request: ['Draft', 'Published', 'Matching', 'Matched', 'Booked', 'In Progress', 'Completed', 'Cancelled', 'Expired'],
+    booking: ['Pending', 'Confirmed', 'In Progress', 'Completed', 'Cancelled', 'Failed'],
+    trip: ['Planned', 'Started', 'Arrived', 'Completed', 'Cancelled'],
+    load: ['Created', 'Assigned', 'Picked Up', 'In Transit', 'Delivered', 'Completed', 'Cancelled'],
+    order: ['Pending', 'Accepted', 'Processing', 'Fulfilled', 'Completed', 'Cancelled'],
+    payment: ['Pending', 'Authorized', 'Paid', 'Failed', 'Refunded', 'Partially Refunded'],
+    support: ['Open', 'Assigned', 'Waiting', 'Escalated', 'Resolved', 'Closed'],
+    verification: ['Pending', 'Approved', 'Rejected', 'Expired']
+  },
+  nonFunctional: {
+    performance: 'Interactive APIs responsive; long reports use background jobs',
+    availability: 'Critical booking, trip, payment operations fail safely',
+    security: 'Auth, RBAC, ownership checks, validation, rate limiting, audit logging',
+    scalability: 'Feature modules and shared packages support growth',
+    maintainability: 'Business logic in backend modules; UI focuses on presentation',
+    reliability: 'Financial and lifecycle operations idempotent where retries occur',
+    observability: 'Material errors, job failures, financial actions traceable',
+    accessibility: 'Keyboard, focus, labeling, status communication',
+    dataIntegrity: 'Database constraints and transactions protect invariants',
+    privacy: 'Minimum necessary information exposure'
+  },
+  releasePriority: {
+    P0: [
+      'Authentication',
+      'Customer requests',
+      'Matching',
+      'Booking',
+      'Core trip/load lifecycle',
+      'Driver acceptance/execution',
+      'Core payments',
+      'Admin controls',
+      'Authorization',
+      'Audit',
+      'Critical notifications'
+    ],
+    P1: [
+      'Wallet enhancements',
+      'Vendor offers/orders/inventory',
+      'Reviews',
+      'Support workflow',
+      'Reports',
+      'Advanced notifications'
+    ],
+    P2: [
+      'Advanced analytics',
+      'Optimization',
+      'Additional integrations',
+      'Expanded automation',
+      'Future enhancements'
+    ]
+  },
+  testing: {
+    unit: 'Validation, financial rules, permissions, lifecycle transitions, matching constraints',
+    integration: 'Auth, authorization, database transactions, API contracts, provider callbacks, jobs',
+    e2e: [
+      'Customer: Login → request → match → booking → payment → tracking → completion → review/support',
+      'Driver: Login/verification → vehicle → availability → opportunity → accept → execution → earnings',
+      'Vendor: Login/verification → request → offer → order → inventory → fulfillment → analysis',
+      'Admin: Login → users/verification → operations → finance → reports → support → settings'
+    ],
+    security: 'Unauthorized access, ownership bypass, rate limits, session handling, audit',
+    financial: 'Idempotency, duplicate callback protection, refund limits, ledger reconciliation, wallet atomicity'
+  },
+  screens: {
+    customer: [
+      'Dashboard',
+      'My Requests',
+      'My Bookings',
+      'Track Orders',
+      'My Trips',
+      'Payments & Wallets',
+      'Messages / Notifications',
+      'Support Center / FAQs',
+      'Profile Settings'
+    ],
+    driver: [
+      'Dashboard',
+      'Driver Trips',
+      'Available Loads',
+      'Vehicles',
+      'Bookings',
+      'Earnings & Wallets',
+      'Reviews & Ratings',
+      'Messages / Notifications',
+      'Profile Settings'
+    ],
+    vendor: [
+      'Dashboard',
+      'New Request',
+      'My Offers',
+      'My Orders',
+      'Inventory',
+      'Analysis',
+      'Messages / Notifications',
+      'Profile Settings'
+    ],
+    admin: [
+      'Dashboard',
+      'User Management',
+      'Drivers / Vendors / Customers',
+      'Trips & Bookings',
+      'Fleet Management',
+      'Load Management',
+      'Payments & Wallets',
+      'Reports & Analysis',
+      'Reviews & Ratings',
+      'Support Center',
+      'System Settings'
+    ]
+  },
+  openDecisions: [
+    'Pricing and quotation rules for passenger and item transport',
+    'Cancellation, refund, commission and dispute policies',
+    'Initial Ethiopian cities, routes and service areas',
+    'GPS tracking frequency, location privacy and retention',
+    'Payment providers and supported payment methods',
+    'Wallet eligibility, limits and withdrawal policy',
+    'Driver, vehicle and vendor verification documents and approval rules',
+    'Proof-of-pickup and proof-of-delivery requirements by service type',
+    'Mandatory notification channels and escalation behavior',
+    'Support SLA, priority levels and escalation tiers',
+    'Data retention, anonymization and deletion rules',
+    'Matching/ranking weights configuration'
+  ],
+  definitionOfDone: [
+    'Requirement ID implemented and linked to backlog item',
+    'UI states exist for loading, success, empty, validation, permission, failure',
+    'Backend business rule in correct domain module',
+    'Authorization and ownership checks enforced server-side',
+    'Database constraints and transactions protect invariants',
+    'Notifications, audit events, jobs implemented for side effects',
+    'Shared types/constants updated for domain contract changes',
+    'Unit and integration tests cover business rule',
+    'At least one E2E scenario covers every P0 workflow',
+    'API and setup documentation updated',
+    'Security and accessibility checks pass',
+    'Acceptance criteria demonstrated and signed off'
+  ],
+  repositoryTraceability: {
+    'apps/web': ['FR-PUB', 'FR-CUS', 'FR-DRV', 'FR-VEN'],
+    'apps/mobile': ['FR-DRV', 'FR-CUS', 'FR-TRP', 'FR-LOAD', 'FR-NOT'],
+    'apps/admin': ['FR-ADM', 'FR-REP', 'FR-REV', 'FR-SUP', 'FR-SET'],
+    'backend/src/modules/auth': ['FR-AUTH'],
+    'backend/src/modules/requests': ['FR-CUS', 'request lifecycle'],
+    'backend/src/modules/matching': ['FR-MAT'],
+    'backend/src/modules/trips': ['FR-TRP'],
+    'backend/src/modules/bookings': ['FR-BKG'],
+    'backend/src/modules/loads': ['FR-LOAD'],
+    'backend/src/modules/vehicles': ['FR-VEH'],
+    'backend/src/modules/orders': ['FR-ORD', 'FR-VEN'],
+    'backend/src/modules/inventory': ['FR-VEN', 'inventory'],
+    'backend/src/modules/payments': ['FR-PAY', 'FR-FIN'],
+    'backend/src/modules/wallets': ['FR-WAL'],
+    'backend/src/modules/messages': ['FR-MSG'],
+    'backend/src/modules/notifications': ['FR-NOT'],
+    'backend/src/modules/reviews': ['FR-REV'],
+    'backend/src/modules/support': ['FR-SUP'],
+    'backend/src/modules/reports': ['FR-REP'],
+    'backend/src/modules/settings': ['FR-SET'],
+    'backend/src/modules/audit': ['FR-SEC', 'FR-ADM'],
+    'backend/src/middleware': ['FR-SEC'],
+    'backend/src/database': ['FR-DB'],
+    'backend/src/jobs': ['FR-JOB'],
+    'packages/*': ['Shared contracts'],
+    'tests/*': ['Functional verification'],
+    'infrastructure/*': ['Runtime/deployment'],
+    'docs/*': ['Architecture/API/setup'],
+    'scripts/*': ['Migrations/seed/CI']
+  },
+  documentInfo: {
+    documentId: 'TMS-SRS-003',
+    version: '3.0',
+    status: 'Implementation-ready functional baseline',
+    date: '2026-10-04',
+    product: 'Transport Management System (TMS)',
+    market: 'Ethiopia / ETB-ready',
+    audience: ['Product', 'UX/UI', 'Engineering', 'QA', 'DevOps', 'Operations']
+  },
+   links: {
+        github: 'https://github.com/Daniel21Ayen/TMS-platform',
+        demo: 'https://text.vercel.app/',
+        docs: null
+      }
+},
       {
       id: 8,
       title: 'Real-Time Chat Application',
