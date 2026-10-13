@@ -36,7 +36,7 @@ import styles from './Skills.module.css';
 
 const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
-
+ 
   const categories = [
     { id: 'all', label: 'All Skills', icon: <FaLayerGroup />, color: '#64ffda' },
     { id: 'frontend', label: 'Frontend', icon: <SiReact />, color: '#61DAFB' },
@@ -116,7 +116,7 @@ const Skills = () => {
       </section>
 
       {/* Category Breakdown */}
-      <section className={styles.breakdown}>
+      {/* <section className={styles.breakdown}>
         <div className="container">
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Skill Distribution</h2>
@@ -200,7 +200,7 @@ const Skills = () => {
               })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Interactive Skill Icons */}
       <section className={styles.interactive}>

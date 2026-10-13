@@ -495,14 +495,14 @@ const Projects = () => {
         'Admin payment verification queue',
         'Admin image scanning and image-to-PDF conversion',
         'Offline answer persistence to encrypted SQLite',
-        'Monotonic timer for exams',
+        'Monotonic timer for exams', 
         'Bilingual STEM/LaTeX rendering offline',
         'Learning status and progress tracking',
         'App package size < 50 MB (hard release gate)'
       ],
       images: [
-        'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop'
+        'mastaraAdmin.png',
+        'mastara.png'
       ],
       stats: {
         stars: 34, forks: 8, views: 890,
