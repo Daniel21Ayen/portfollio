@@ -1,13 +1,14 @@
 @import '../styles/variables.css';
 
+/* ===== PAGE ===== */
 .page {
-  padding-top: 6rem;
+  padding-top: 5rem;
 }
 
-/* Hero Section */
+/* ===== HERO SECTION ===== */
 .hero {
-  padding: 9rem 0 7rem;
-  min-height: 85vh;
+  padding: 4rem 0 3rem;
+  min-height: auto;
   display: flex;
   align-items: center;
   background: var(--bg-gradient);
@@ -18,106 +19,94 @@
 .hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
 }
 
+/* ===== GRID LAYOUT ===== */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
   align-items: center;
   width: 100%;
   position: relative;
   z-index: 1;
 }
 
-/* Image side */
+/* ===== IMAGE SIDE ===== */
 .imageContainer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   position: relative;
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
-  max-width: 460px;
+  max-width: 420px;
 }
 
 .image {
   width: 100%;
   height: auto;
-  border-radius: 50px;
+  border-radius: 24px;
   object-fit: cover;
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 10px rgba(100, 255, 218, 0.12);
-  border: 3px solid rgba(100, 255, 218, 0.25);
-  transition: all 0.45s ease;
+    0 0 0 8px rgba(100, 255, 218, 0.08);
+  border: 2px solid rgba(100, 255, 218, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .image:hover {
-  transform: translateY(-15px) scale(1.04);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 
     0 40px 80px -20px rgba(0, 0, 0, 0.6),
-    0 0 0 14px rgba(100, 255, 218, 0.18);
+    0 0 0 10px rgba(100, 255, 218, 0.12);
 }
 
-/* Content side */
+/* ===== CONTENT SIDE - LEFT ALIGNED ===== */
 .content {
-  text-align: center;
-  max-width: 600px;
+  text-align: left;
+  max-width: 580px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-lg);
-  background: rgba(100, 255, 218, 0.1);
-  border: 1px solid rgba(100, 255, 218, 0.2);
-  border-radius: var(--radius-full);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--primary);
-  margin-bottom: var(--space-lg);
+  align-items: flex-start;
 }
 
 .title {
-  font-size: 3.6rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: var(--space-lg);
+  margin: 0 0 var(--space-md);
   color: var(--text-primary);
-  line-height: 1.1;
+  line-height: 1.15;
+  text-align: left;
+  width: 100%;
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
-  line-height: 1.75;
-  max-width: 90%;
+  line-height: 1.7;
+  max-width: 100%;
   margin: 0;
+  text-align: left;
 }
 
-/* Personal Info */
+/* ===== PERSONAL INFO ===== */
 .personalInfo {
-  padding: var(--space-3xl) 0;
+  padding: 4rem 0;
 }
 
 .infoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
-  max-width: 1200px;
+  gap: var(--space-lg);
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -125,7 +114,7 @@
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   text-align: center;
   transition: all var(--transition-base);
 }
@@ -137,42 +126,42 @@
 }
 
 .infoIcon {
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   background: var(--primary-gradient);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--bg-primary);
-  margin: 0 auto var(--space-lg);
+  margin: 0 auto var(--space-md);
 }
 
 .infoCard h3 {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .infoCard p {
   color: var(--text-muted);
-  margin-bottom: var(--space-sm);
-  font-size: 0.95rem;
+  margin-bottom: var(--space-xs);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .infoDetail {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--primary);
   font-weight: 500;
 }
 
-/* Philosophy */
+/* ===== PHILOSOPHY ===== */
 .philosophy {
-  padding: var(--space-3xl) 0;
-  /* background: linear-gradient(135deg, rgba(10, 25, 47, 0.9) 0%, rgba(2, 12, 27, 0.9) 100%); */
+  padding: 4rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -184,8 +173,9 @@
   right: -20%;
   width: 80%;
   height: 200%;
-  background: radial-gradient(circle, rgba(100, 255, 218, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(100, 255, 218, 0.04) 0%, transparent 70%);
   border-radius: 50%;
+  pointer-events: none;
 }
 
 .philosophyContent {
@@ -197,36 +187,40 @@
 }
 
 .philosophyIcon {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   background: var(--primary-gradient);
-  border-radius: 16px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: var(--bg-primary);
-  margin: 0 auto var(--space-xl);
+  margin: 0 auto var(--space-lg);
 }
 
 .philosophyTitle {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
 }
 
 .philosophyText {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: var(--space-xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* ===== PRINCIPLES - LEFT ALIGNED TEXT ===== */
 .principles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   text-align: left;
 }
 
@@ -234,34 +228,43 @@
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   transition: all var(--transition-base);
+  text-align: left;
+}
+
+.principle:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
 }
 
 .principle span {
   display: block;
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  color: rgba(100, 255, 218, 0.2);
-  margin-bottom: var(--space-md);
+  color: rgba(100, 255, 218, 0.15);
+  margin-bottom: var(--space-sm);
   line-height: 1;
 }
 
 .principle h4 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .principle p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-/* Resume Section */
+/* ===== RESUME SECTION ===== */
 .resumeSection {
-  padding: var(--space-3xl) 0;
+  padding: 4rem 0;
   background: var(--bg-secondary);
 }
 
@@ -272,27 +275,27 @@
 }
 
 .resumeIcon {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   background: var(--primary-gradient);
-  border-radius: 16px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: var(--bg-primary);
-  margin: 0 auto var(--space-xl);
+  margin: 0 auto var(--space-lg);
 }
 
 .resumeTitle {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .resumeText {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: var(--space-xl);
@@ -301,7 +304,7 @@
 .resumeActions {
   display: flex;
   justify-content: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   flex-wrap: wrap;
 }
 
@@ -310,10 +313,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-md) var(--space-xl);
+  padding: 0.85rem 1.75rem;
   border-radius: var(--radius-md);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
@@ -341,52 +344,221 @@
   border-color: var(--border-hover);
 }
 
-/* Responsive */
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablet - 992px */
 @media (max-width: 992px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--space-2xl);
+    gap: var(--space-xl);
   }
 
   .imageContainer {
+    order: 1;
     justify-content: center;
   }
 
-  .imageWrapper {
-    max-width: 380px;
+  .content {
+    order: 2;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
   }
 
-  .principles,
+  .title {
+    text-align: center;
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .imageWrapper {
+    max-width: 340px;
+  }
+
   .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .principles {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Mobile Landscape / Small Tablet - 768px */
 @media (max-width: 768px) {
-  .title {
-    font-size: 2.6rem;
+  .page {
+    padding-top: 4.5rem;
   }
-  
+
   .hero {
-    padding: 7rem 0 5rem;
+    padding: 3rem 0 2.5rem;
   }
 
-  .philosophyTitle {
-    font-size: 1.8rem;
-  }
-
-  .principles,
-  .infoGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
   .title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .imageWrapper {
+    max-width: 300px;
+  }
+
+  .image {
+    border-radius: 20px;
+  }
+
+  .personalInfo,
+  .philosophy,
+  .resumeSection {
+    padding: 3rem 0;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .infoCard {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .philosophyTitle {
+    font-size: 1.6rem;
+  }
+
+  .philosophyText {
+    font-size: 0.95rem;
+  }
+
+  .principles {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .principle {
+    padding: var(--space-md);
+  }
+
+  .principle span {
+    font-size: 1.8rem;
+  }
+
+  .resumeTitle {
+    font-size: 1.5rem;
+  }
+
+  .resumeText {
+    font-size: 0.95rem;
+  }
+
+  .resumeActions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .resumeDownloadBtn,
+  .resumeViewBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Mobile Portrait - 480px */
+@media (max-width: 480px) {
+  .page {
+    padding-top: 4rem;
+  }
+
+  .hero {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .grid {
+    gap: var(--space-lg);
+  }
+
+  .imageWrapper {
+    max-width: 240px;
+  }
+
+  .image {
+    border-radius: 18px;
+    box-shadow: 
+      0 15px 35px -10px rgba(0, 0, 0, 0.5),
+      0 0 0 6px rgba(100, 255, 218, 0.08);
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+  .subtitle {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .personalInfo,
+  .philosophy,
+  .resumeSection {
+    padding: 2.5rem 0;
+  }
+
+  .infoIcon,
+  .philosophyIcon,
+  .resumeIcon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+
+  .infoCard h3 {
+    font-size: 1.05rem;
+  }
+
+  .infoCard p {
+    font-size: 0.85rem;
+  }
+
+  .philosophyTitle {
+    font-size: 1.4rem;
+  }
+
+  .philosophyText {
+    font-size: 0.9rem;
+  }
+
+  .principle span {
+    font-size: 1.6rem;
+  }
+
+  .principle h4 {
+    font-size: 1rem;
+  }
+
+  .principle p {
+    font-size: 0.85rem;
+  }
+
+  .resumeTitle {
+    font-size: 1.35rem;
+  }
+
+  .resumeText {
+    font-size: 0.9rem;
+  }
+
+  .resumeDownloadBtn,
+  .resumeViewBtn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
   }
 }

@@ -39,10 +39,7 @@ const About = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className={styles.content}
             >
-              <div className={styles.badge}>
-                <FaUser />
-                <span>About Me</span>
-              </div>
+           
               
               <h1 className={styles.title}>
                 Passionate <span className="highlight">Software Engineer</span> & Problem Solver
@@ -189,7 +186,7 @@ const About = () => {
                 <FaEye />
                 <span>View Online</span>
               </motion.button>
-            </div>
+            </div> 
           </motion.div>
         </div>
       </section>

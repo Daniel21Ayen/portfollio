@@ -34,7 +34,7 @@ import {
 } from 'react-icons/si';
 import styles from './Skills.module.css';
 
-const Skills = () => {
+const Skills = () => { 
  
   const [activeSkill, setActiveSkill] = useState(null);
 
@@ -108,10 +108,7 @@ const Skills = () => {
             transition={{ duration: 0.8 }}
             className={styles.heroContent} 
           >
-            <div className="hero-badge">
-              <FaCode />
-              <span>Technical Expertise</span>
-            </div>
+          
             
             <h1 className={styles.heroTitle}>
               My <span className="highlight">Technology</span> Toolkit

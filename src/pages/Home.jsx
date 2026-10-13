@@ -38,10 +38,7 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className={styles.heroText}
               >
-                <div className={styles.heroBadge}>
-                  <span className="badge-dot"></span>
-                  <span>Software Engineer</span>
-                </div>
+                
                 <h1 className={styles.heroTitle}>
                   Hi, I'm <span className="highlight">Daniel Ayen</span>
                 </h1>
@@ -74,7 +71,7 @@ const Home = () => {
                   </Link>
                   <Link to="/projects" className="btn btn-outline">
                     View Projects
-                  </Link>
+                  </Link> 
                 </div>
               </motion.div>
  
