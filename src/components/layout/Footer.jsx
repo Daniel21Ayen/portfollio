@@ -9,18 +9,18 @@ import styles from './Footer.module.css';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  return (
+  return ( 
     <footer className={styles.footer}>
       <div className={styles.container}>
         {/* Contact Info */}
         <div className={styles.contactInfo}>
           <div className={styles.contactItem}>
             <FaRegEnvelope />
-            <a href="mailto:hello@example.com">hello@example.com</a>
+            <a href="mailto:danielayen2112@gmail.com">danielayen2112@gmail.com</a>
           </div>
           <div className={styles.contactItem}>
             <FaPhone />
-            <a href="tel:+251912345678">+251 912 345 678</a>
+            <a href="tel:+251938803929">+251 912 345 678</a>
           </div>
           <div className={styles.contactItem}>
             <FaMapMarkerAlt />
