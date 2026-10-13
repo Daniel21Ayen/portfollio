@@ -44,13 +44,7 @@ const Footer = () => {
               <span>by Software Engineer</span>
             </div>
             
-            <div className={styles.footerLinks}>
-              <a href="#privacy">Privacy Policy</a>
-              <span className={styles.divider}>•</span>
-              <a href="#terms">Terms of Service</a>
-              <span className={styles.divider}>•</span>
-              <a href="#cookies">Cookies</a>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -78,7 +72,7 @@ const Footer = () => {
         >
           {'console.log()'}
         </motion.div>
-      </div>
+      </div> 
     </footer>
   );
 };

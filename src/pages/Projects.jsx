@@ -63,7 +63,7 @@ const Projects = () => {
       '70+ functional requirements implemented',
       '15+ database tables with complex relationships'
     ],
-    images: ['https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop'],
+    images: ['university-allocation-system.png'],
     video: null,
     links: {
       github: 'https://github.com/Daniel21Ayen/newselection',
@@ -190,7 +190,7 @@ const Projects = () => {
     "4 Maven modules: Contracts, Persistence, Engine, Client"
   ],
   "images": [
-    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop"
+    "globalBanking.png"
   ],
   "video": null,
   "links": {
@@ -340,12 +340,12 @@ The platform follows Stack Overflow-style conventions and provides an intuitive 
       'Protected routes for authenticated users',
       'Responsive mobile-friendly design'
     ],
-    images: ['https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop'],
+    images: ['evangadiforum.png'],
     video: null,
     links: {
-      github: 'https://github.com/yourusername/evangadi-forum',
+      github: 'https://github.com/Daniel21Ayen/evangadi-forum',
       demo: 'https://evangadi-forum-tau-one.vercel.app/',
-      docs: 'https://github.com/yourusername/evangadi-forum#readme'
+      docs: 'https://github.com/Daniel21Ayen/evangadi-forum#readme'
     },
     stats: {
       stars: 0,
@@ -427,13 +427,13 @@ The platform follows Stack Overflow-style conventions and provides an intuitive 
       'Customer management with vehicle history tracking',
       'Order management with task assignment',
       'Employee management with role-based access',
-      'Public pages (Home, About, Services, Contact)',
+      'Public pages (Home, About, Services, Contact)', 
       'Order tracking without login (unique hash)',
       'Service history and customer retention',
       'AWS deployment with CloudWatch monitoring',
       'Responsive Bootstrap template'
     ],
-    images: ['https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=800&auto=format&fit=crop'],
+    images: ['abeGarage.png'],
     video: null,
     links: {
       github: 'https://github.com/Daniel21Ayen/AbeGarageProject',
@@ -469,43 +469,7 @@ The platform follows Stack Overflow-style conventions and provides an intuitive 
     complexity: 'high'
   },
  
-    // {
-    //   id: 3,
-    //   title: 'AI-Powered Analytics Dashboard',
-    //   type: 'frontend',
-    //   featured: false,
-    //   date: '2024-02-01',
-    //   duration: '1.5 months',
-    //   teamSize: 1,
-    //   status: 'in-progress',
-    //   progress: 75,
-    //   shortDescription: 'Dashboard for visualizing AI model predictions with interactive charts and real-time data.',
-    //   fullDescription: 'An advanced analytics dashboard built with React and TypeScript for visualizing machine learning model predictions and real-time data streams.',
-    //   technologies: ['React', 'TypeScript', 'D3.js', 'Chart.js', 'Tailwind'],
-    //   features: [
-    //     'Interactive data visualizations',
-    //     'Real-time data updates',
-    //     'Custom chart configurations',
-    //     'Export functionality',
-    //     'Responsive design'
-    //   ],
-    //   images: ['https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop'],
-    //   stats: {
-    //     stars: 18,
-    //     forks: 5,
-    //     views: 560,
-    //     linesOfCode: 6500,
-    //     commits: 67,
-    //     branches: 4
-    //   },
-    //   challenges: [
-    //     {
-    //       title: 'Real-time data synchronization',
-    //       solution: 'Implemented WebSocket connections with automatic reconnection'
-    //     }
-    //   ],
-    //   complexity: 'high'
-    // },
+  
     {
   "id": 5,
   "title": "AI Personal Agent - Full Stack SaaS Application",
@@ -612,43 +576,7 @@ The system handles complex integrations with multiple external APIs and includes
   ],
   "complexity": "high"
 },
-    // {
-    //   id: 4,
-    //   title: 'Task Management System',
-    //   type: 'fullstack',
-    //   featured: false,
-    //   date: '2023-09-10',
-    //   duration: '1 month',
-    //   teamSize: 1,
-    //   status: 'completed',
-    //   progress: 100,
-    //   shortDescription: 'Collaborative task management system with drag-and-drop interface.',
-    //   fullDescription: 'A collaborative task management system with drag-and-drop functionality, team collaboration features, and real-time updates.',
-    //   technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
-    //   features: [
-    //     'Drag-and-drop interface',
-    //     'Team collaboration',
-    //     'Real-time updates',
-    //     'File attachments',
-    //     'Progress tracking'
-    //   ],
-    //   images: ['https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop'],
-    //   stats: {
-    //     stars: 25,
-    //     forks: 6,
-    //     views: 720,
-    //     linesOfCode: 5000,
-    //     commits: 82,
-    //     branches: 3
-    //   },
-    //   challenges: [
-    //     {
-    //       title: 'Drag-and-drop performance',
-    //       solution: 'Optimized with React DnD and virtual scrolling'
-    //     }
-    //   ],
-    //   complexity: 'medium'
-    // },
+   
     {
       id: 6,
       title: 'Weather Forecast App',
@@ -750,7 +678,7 @@ The system handles complex integrations with multiple external APIs and includes
     'Comprehensive audit trail for material actions'
   ],
   images: [
-    'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&auto=format&fit=crop',
+    'weather.png',
     'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&auto=format&fit=crop'
   ],
@@ -1081,7 +1009,7 @@ The system handles complex integrations with multiple external APIs and includes
     date: '2026-10-04',
     product: 'Transport Management System (TMS)',
     market: 'Ethiopia / ETB-ready',
-    audience: ['Product', 'UX/UI', 'Engineering', 'QA', 'DevOps', 'Operations']
+    audience:  ['Product', 'UX/UI', 'Engineering', 'QA', 'DevOps', 'Operations']
   },
    links: {
         github: 'https://github.com/Daniel21Ayen/TMS-platform',
@@ -1708,7 +1636,7 @@ The system handles complex integrations with multiple external APIs and includes
       case: 'Rejected receipt',
       behavior: 'Reason shown; corrected resubmission allowed'
     }
-  ],
+  ], 
   implementationRoadmap: [
     'Phase 0: SRS + UX baseline - Approved v1.3 and traceability',
     'Phase 1: Foundation - RN shell, Admin Web, NestJS, PostgreSQL, CI',
