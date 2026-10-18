@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaRegEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { 
+  FaRegEnvelope, FaPhone, FaMapMarkerAlt,
+  FaGithub, FaLinkedin, FaTwitter
+} from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -21,6 +24,37 @@ const Footer = () => {
             <FaMapMarkerAlt />
             <span>Injibara University, Ethiopia</span>
           </div>
+        </div>
+
+        {/* Social Links */}
+        <div className={styles.socialLinks}>
+          <a
+            href="https://github.com/Daniel21Ayen"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className={styles.socialIcon}
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/daniel-ayen-3113643b4"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className={styles.socialIcon}
+          >
+            <FaLinkedin />
+          </a>
+          <a
+            href="https://x.com/DanielAyenm3"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter / X"
+            className={styles.socialIcon}
+          >
+            <FaTwitter />
+          </a>
         </div>
       </div>
 

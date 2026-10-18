@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import {FaArrowDown,FaRocket,FaCode,FaGithub,FaLinkedin,FaTwitter,FaCalendarAlt} from 'react-icons/fa';
+import { FaArrowDown, FaCalendarAlt } from 'react-icons/fa';
 import {SiReact,SiNodedotjs,SiTypescript,SiMongodb,SiTailwindcss} from 'react-icons/si';
 import styles from './Home.module.css';
 import profileImage from '../assets/Images/8mg/profiles.webp';
@@ -64,14 +64,6 @@ const Home = () => {
                     <span className={styles.statNumber}>95%</span>
                     <span className={styles.statLabel}>Satisfaction</span>
                   </div>
-                </div>
-                <div className={styles.heroActions}>
-                  <Link to="/skills" className="btn btn-primary">
-                    <FaRocket /> My Skills
-                  </Link>
-                  <Link to="/projects" className="btn btn-outline">
-                    View Projects
-                  </Link> 
                 </div>
               </motion.div>
  
@@ -137,17 +129,6 @@ const Home = () => {
               transition={{ delay: 0.6 }}
               className={styles.heroFooter}
             >
-              <div className={styles.socialLinks}>
-                <a href="https://github.com/Daniel21Ayen" target="_blank" rel="noopener noreferrer">
-                  <FaGithub />
-                </a>
-                <a href="https://www.linkedin.com/in/daniel-ayen-3113643b4" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin />
-                </a>
-                <a href="https://x.com/DanielAyenm3" target="_blank" rel="noopener noreferrer">
-                  <FaTwitter />
-                </a>
-              </div>
               <div className={styles.scrollDown}>
                 <motion.div
                   animate={{ y: [0, 10, 0] }}
