@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaRegEnvelope, FaPhone, FaMapMarkerAlt,
-  FaGithub, FaLinkedin, FaTwitter
+  FaGithub, FaLinkedin, FaTwitter, FaTelegram
 } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
@@ -54,6 +54,15 @@ const Footer = () => {
             className={styles.socialIcon}
           >
             <FaTwitter />
+          </a>
+          <a
+            href="https://t.me/Dani_from_online"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+            className={styles.socialIcon}
+          >
+            <FaTelegram />
           </a>
         </div>
       </div>

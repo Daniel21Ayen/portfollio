@@ -376,7 +376,7 @@ const Contact = () => {
                     Chat on WhatsApp
                   </a>
                   <a
-                    href="https://t.me/DanielAyen"
+                    href="https://t.me/Dani_from_online"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`${styles.directBtn} ${styles.telegram}`}
