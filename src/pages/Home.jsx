@@ -32,45 +32,11 @@ const Home = () => {
         <div className="container">
           <div className={styles.heroContent}>
             <div className={styles.heroMain}>
+              {/* Left: Profile Visual */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className={styles.heroText}
-              >
-                
-                <h1 className={styles.heroTitle}>
-                  Hi, I'm <span className="highlight">Daniel Ayen</span>
-                </h1>
-                <h2 className={styles.heroSubtitle}>
-                  I build <span className="highlight">digital experiences</span>
-                  <br />that make an impact
-                </h2>
-                <p className={styles.heroDescription}>
-                  Full Stack Developer & 3rd Year Software Engineering student
-                  at Injibara University, passionate about creating elegant
-                  solutions with modern technologies.
-                </p>
-                <div className={styles.heroStats}>
-                  <div className={styles.stat}>
-                    <span className={styles.statNumber}>20+</span>
-                    <span className={styles.statLabel}>Technologies</span>
-                  </div>
-                  <div className={styles.stat}>
-                    <span className={styles.statNumber}>15+</span>
-                    <span className={styles.statLabel}>Projects</span>
-                  </div>
-                  <div className={styles.stat}>
-                    <span className={styles.statNumber}>95%</span>
-                    <span className={styles.statLabel}>Satisfaction</span>
-                  </div>
-                </div>
-              </motion.div>
- 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                initial={{ opacity: 0, scale: 0.9, x: -30 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
                 className={styles.heroVisual} 
               >
                 <motion.div
@@ -120,6 +86,41 @@ const Home = () => {
                     </div>
                   </div>
                 </motion.div>
+              </motion.div>
+
+              {/* Right: Text content close to image */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                className={styles.heroText}
+              >
+                <h1 className={styles.heroTitle}>
+                  Hi, I'm <span className="highlight">Daniel Ayen</span>
+                </h1>
+                <h2 className={styles.heroSubtitle}>
+                  I build <span className="highlight">digital experiences</span>
+                  <br />that make an impact
+                </h2>
+                <p className={styles.heroDescription}>
+                  Full Stack Developer & 3rd Year Software Engineering student
+                  at Injibara University, passionate about creating elegant
+                  solutions with modern technologies.
+                </p>
+                <div className={styles.heroStats}>
+                  <div className={styles.stat}>
+                    <span className={styles.statNumber}>20+</span>
+                    <span className={styles.statLabel}>Technologies</span>
+                  </div>
+                  <div className={styles.stat}>
+                    <span className={styles.statNumber}>15+</span>
+                    <span className={styles.statLabel}>Projects</span>
+                  </div>
+                  <div className={styles.stat}>
+                    <span className={styles.statNumber}>95%</span>
+                    <span className={styles.statLabel}>Satisfaction</span>
+                  </div>
+                </div>
               </motion.div>
             </div>
 
