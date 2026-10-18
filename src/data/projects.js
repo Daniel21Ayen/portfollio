@@ -277,8 +277,8 @@ export const projectsData = [
       'Dark/Light Mode Support'
     ],
     images: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop'
+      'AI Personal Agent Dashboard Showcase.png',
+      'AI Personal Agent Analytics Dashboard.png'
     ],
     video: null,
     links: {
