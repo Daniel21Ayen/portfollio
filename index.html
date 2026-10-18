@@ -1,16 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a192f" />
     <meta name="color-scheme" content="dark" />
-    
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/png" href="/favicon.png" />
+    <link rel="image_src" href="https://portfollio-lovat-alpha.vercel.app/og-image.jpg" />
+    <link rel="canonical" href="https://portfollio-lovat-alpha.vercel.app/" />
+
     <!-- Primary Search Engine Meta Tags -->
-    <title>Daniel Ayen | Software Engineer &amp; Full-Stack Developer</title>
-    <meta name="title" content="Daniel Ayen | Software Engineer &amp; Full-Stack Developer" />
+    <title>Daniel Ayen | Full-Stack Software Engineer</title>
+    <meta name="title" content="Daniel Ayen | Full-Stack Software Engineer" />
     <meta name="description" content="Portfolio of Daniel Ayen, a Software Engineer and Full-Stack Developer at Injibara University. Building high-performance web applications, distributed systems, and AI-powered solutions with React, Next.js, Node.js, and TypeScript." />
     <meta name="keywords" content="Daniel Ayen, Software Engineer, Full Stack Developer, React, Next.js, Node.js, TypeScript, PostgreSQL, Distributed Systems, Injibara University, Web Development, Ethiopia Software Developer, AI Personal Agent" />
     <meta name="author" content="Daniel Ayen" />
@@ -19,40 +23,40 @@
     <meta name="language" content="English" />
     <meta name="geo.region" content="ET" />
     <meta name="geo.placename" content="Injibara, Ethiopia" />
-    <link rel="canonical" href="https://portfollio-lovat-alpha.vercel.app/" />
+
+    <!-- Google & WhatsApp Microdata -->
+    <meta itemprop="name" content="Daniel Ayen | Full-Stack Software Engineer" />
+    <meta itemprop="description" content="Portfolio of Daniel Ayen, a Software Engineer and Full-Stack Developer at Injibara University. Building high-performance web applications, distributed systems, and AI-powered solutions." />
+    <meta itemprop="image" content="https://portfollio-lovat-alpha.vercel.app/og-image.jpg" />
+
+    <!-- Open Graph / WhatsApp / Telegram / Facebook / LinkedIn / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Daniel Ayen Portfolio" />
+    <meta property="og:url" content="https://portfollio-lovat-alpha.vercel.app/" />
+    <meta property="og:title" content="Daniel Ayen | Full-Stack Software Engineer" />
+    <meta property="og:description" content="Portfolio of Daniel Ayen — Software Engineer building scalable full-stack web applications, distributed banking systems, and AI-driven platforms." />
+    <meta property="og:image" content="https://portfollio-lovat-alpha.vercel.app/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://portfollio-lovat-alpha.vercel.app/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Daniel Ayen - Software Engineer Portfolio Showcase" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@DanielAyenm3" />
+    <meta name="twitter:creator" content="@DanielAyenm3" />
+    <meta name="twitter:url" content="https://portfollio-lovat-alpha.vercel.app/" />
+    <meta name="twitter:title" content="Daniel Ayen | Full-Stack Software Engineer" />
+    <meta name="twitter:description" content="Portfolio of Daniel Ayen — Software Engineer building scalable full-stack web applications, distributed banking systems, and AI-driven platforms." />
+    <meta name="twitter:image" content="https://portfollio-lovat-alpha.vercel.app/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Daniel Ayen - Software Engineer Portfolio Preview" />
 
     <!-- Search Engine Crawler Directives -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large" />
-
-    <!-- Open Graph / Facebook / LinkedIn / Discord / Telegram Meta Tags -->
-    <meta property="og:type" content="profile" />
-    <meta property="og:site_name" content="Daniel Ayen Portfolio" />
-    <meta property="og:url" content="https://portfollio-lovat-alpha.vercel.app/" />
-    <meta property="og:title" content="Daniel Ayen | Software Engineer &amp; Full-Stack Developer" />
-    <meta property="og:description" content="Portfolio of Daniel Ayen — Software Engineer building scalable full-stack web applications, distributed banking systems, and AI-driven platforms." />
-    <meta property="og:image" content="https://portfollio-lovat-alpha.vercel.app/og-image.png" />
-    <meta property="og:image:secure_url" content="https://portfollio-lovat-alpha.vercel.app/og-image.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Daniel Ayen - Software Engineer Portfolio Showcase" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="profile:first_name" content="Daniel" />
-    <meta property="profile:last_name" content="Ayen" />
-    <meta property="profile:username" content="Daniel21Ayen" />
-    <meta property="profile:gender" content="male" />
-
-    <!-- Twitter / X Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@DanielAyenm3" />
-    <meta name="twitter:creator" content="@DanielAyenm3" />
-    <meta name="twitter:url" content="https://portfollio-lovat-alpha.vercel.app/" />
-    <meta name="twitter:title" content="Daniel Ayen | Software Engineer &amp; Full-Stack Developer" />
-    <meta name="twitter:description" content="Portfolio of Daniel Ayen — Software Engineer building scalable full-stack web applications, distributed banking systems, and AI-driven platforms." />
-    <meta name="twitter:image" content="https://portfollio-lovat-alpha.vercel.app/og-image.png" />
-    <meta name="twitter:image:alt" content="Daniel Ayen - Software Engineer Portfolio Preview" />
 
     <!-- Structured Data (JSON-LD) for Search Engines -->
     <script type="application/ld+json">
