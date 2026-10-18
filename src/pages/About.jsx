@@ -14,7 +14,7 @@ const About = () => {
     {
       role: 'B.Sc. in Software Engineering (Candidate)',
       organization: 'Injibara University, Ethiopia',
-      period: '2022 - 2026 (Expected)',
+      period: '2023 - 2028 (Expected)',
       icon: <FaGraduationCap />,
       description: 'Undergraduate study emphasizing software engineering methodology, data structures, algorithms, operating systems, and distributed system design.',
       highlights: [
@@ -113,7 +113,7 @@ const About = () => {
               </div>
               <h3>Injibara University</h3>
               <p>Bachelor of Science in Software Engineering</p>
-              <span className={styles.infoDetail}>2022 - 2026 (Expected)</span>
+              <span className={styles.infoDetail}>2023 - 2028 (Expected)</span>
             </motion.div>
 
             <motion.div
