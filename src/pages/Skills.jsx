@@ -12,7 +12,8 @@ import {
   FaProjectDiagram,
   FaUsers,
   FaJava,
-  FaCalendarAlt
+  FaCalendarAlt,
+  FaLayerGroup
 } from 'react-icons/fa';
 import {
   SiReact,
