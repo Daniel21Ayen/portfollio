@@ -12,7 +12,7 @@ import {SiReact, SiPython,
 } from 'react-icons/si';
 import styles from './ProjectCard.module.css';
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, onTagClick }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const [videoPlaying, setVideoPlaying] = useState(false);
@@ -107,6 +107,12 @@ const ProjectCard = ({ project }) => {
     }
   };
 
+  const resolveImage = (img) => {
+    if (!img) return '/placeholder.jpg';
+    if (img.startsWith('http') || img.startsWith('/')) return img;
+    return `/${img}`;
+  };
+
   return (
     <>
       {/* Compact Card View */}
@@ -145,6 +151,30 @@ const ProjectCard = ({ project }) => {
           </div>
         </div>
 
+        {images && images.length > 0 && images[0] && (
+          <div
+            className={styles.cardImageContainer}
+            onClick={() => setIsExpanded(true)}
+            role="button"
+            tabIndex={0}
+            aria-label={`Preview ${title}`}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setIsExpanded(true)}
+          >
+            <img
+              src={resolveImage(images[0])}
+              alt={`${title} preview`}
+              className={styles.cardImage}
+              loading="lazy"
+              decoding="async"
+            />
+            <div className={styles.cardImageOverlay}>
+              <span className={styles.cardImageOverlayBtn}>
+                <FaExpand /> Preview
+              </span>
+            </div>
+          </div>
+        )}
+
         <div className={styles.content}>
           <div className={styles.icon}>
             {type === 'fullstack' && <FaServer />}
@@ -170,10 +200,19 @@ const ProjectCard = ({ project }) => {
 
           <div className={styles.tech}>
             {technologies.slice(0, 4).map((tech) => (
-              <span key={tech} className={styles.techTag}>
+              <button
+                key={tech}
+                type="button"
+                className={styles.techTag}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onTagClick) onTagClick(tech);
+                }}
+                title={`Filter projects by ${tech}`}
+              >
                 {techIcons[tech] || <FaCode />}
                 <span>{tech}</span>
-              </span>
+              </button>
             ))}
             {technologies.length > 4 && (
               <span className={styles.techMore}>
@@ -293,9 +332,11 @@ const ProjectCard = ({ project }) => {
                         </div>
                       ) : (
                         <img
-                          src={images[activeImage] || '/placeholder.jpg'}
+                          src={resolveImage(images[activeImage])}
                           alt={`${title} screenshot ${activeImage + 1}`}
                           className={styles.galleryImage}
+                          loading="lazy"
+                          decoding="async"
                         />
                       )}
                     </div>
@@ -315,7 +356,7 @@ const ProjectCard = ({ project }) => {
                               className={`${styles.thumbnail} ${activeImage === index ? styles.active : ''}`}
                               onClick={() => setActiveImage(index)}
                             >
-                              <img src={img} alt={`Thumbnail ${index + 1}`} />
+                              <img src={resolveImage(img)} alt={`Thumbnail ${index + 1}`} loading="lazy" />
                             </button>
                           ))}
                         </div>

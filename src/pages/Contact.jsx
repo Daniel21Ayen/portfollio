@@ -81,9 +81,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Formspree endpoint — replace YOUR_FORM_ID with your actual form ID
-      // Sign up free at https://formspree.io → create form → get your ID
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkjoqpjn';
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkjoqpjn';
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {

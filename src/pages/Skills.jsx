@@ -217,10 +217,11 @@ const Skills = () => {
                 <div className={styles.relatedProjects}>
                   {(activeSkill.relatedProjects || ['Various Projects']).map((projectTitle, index) => (
                     <Link
-                      to="/projects"
+                      to={`/projects?search=${encodeURIComponent(projectTitle)}`}
                       key={index}
                       className={styles.projectChip}
                       onClick={() => setActiveSkill(null)}
+                      title={`View ${projectTitle} on Projects page`}
                     >
                       {projectTitle}
                     </Link>

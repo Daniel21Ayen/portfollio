@@ -9,6 +9,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 import './styles/global.css';
 
 // ScrollToTop component to handle page scroll position
@@ -109,6 +110,20 @@ const AnimatedRoutes = () => {
                 transition={pageTransition}
               >
                 <Contact />
+              </motion.div>
+            } 
+          />
+          <Route 
+            path="*" 
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <NotFound />
               </motion.div>
             } 
           />

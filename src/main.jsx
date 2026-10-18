@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles/global.css';
 
-// Set light theme by default
-const setTheme = () => {
-  const root = document.documentElement;
-  root.setAttribute('data-theme', 'light');
+// Initialize theme from localStorage or default to dark
+const initTheme = () => {
+  const savedTheme = localStorage.getItem('theme');
+  const theme = savedTheme === 'light' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
 };
+
+initTheme();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +18,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-// Set theme on initial load
-setTheme();

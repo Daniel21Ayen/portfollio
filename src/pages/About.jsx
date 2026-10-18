@@ -2,13 +2,56 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaUser, FaUniversity, FaLaptopCode, FaRocket,
-  FaLightbulb, FaFileDownload, FaEye
+  FaLightbulb, FaFileDownload, FaEye, FaGraduationCap,
+  FaBriefcase, FaCodeBranch, FaCalendarAlt, FaCheckCircle
 } from 'react-icons/fa';
 import { downloadResumePdf, viewResumePdf } from '../utils/resume';
 import styles from './About.module.css';
-import profilePic from '../assets/Images/8mg/about-pro.png';
+import profilePic from '../assets/Images/8mg/about-pro.webp';
 
 const About = () => {
+  const timelineData = [
+    {
+      role: 'B.Sc. in Software Engineering (Candidate)',
+      organization: 'Injibara University, Ethiopia',
+      period: '2022 - 2026 (Expected)',
+      icon: <FaGraduationCap />,
+      description: 'Undergraduate study emphasizing software engineering methodology, data structures, algorithms, operating systems, and distributed system design.',
+      highlights: [
+        'Advanced coursework in Database Management, Computer Networks, and Object-Oriented Analysis & Design',
+        'Academic project lead for multi-criteria University Department Selection System',
+        'Collaborative peer coding mentor and active participant in university technology seminars'
+      ],
+      tags: ['Software Engineering', 'Algorithms', 'Databases', 'System Design', 'OOP']
+    },
+    {
+      role: 'Full-Stack Software Engineer & Project Lead',
+      organization: 'Independent / Production Projects',
+      period: '2024 - Present',
+      icon: <FaBriefcase />,
+      description: 'Architecting and building production web applications, distributed systems, and real-time platforms with modern React, Node.js, Java, and PostgreSQL stacks.',
+      highlights: [
+        'Engineered University Department Allocation System handling 70+ functional specs and multi-role RBAC workflows',
+        'Built Global Banking prototype with RMI remote objects, atomic fund transfers, and SHA-256 hash-chained audit trails',
+        'Developed TMS logistics system and Evangadi Forum clone with robust API layers and secure authentication'
+      ],
+      tags: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Java', 'Docker', 'REST APIs']
+    },
+    {
+      role: 'Open-Source & Developer Community Contributor',
+      organization: 'Global Developer Community & GitHub',
+      period: '2023 - Present',
+      icon: <FaCodeBranch />,
+      description: 'Creating open-source repositories, developer tools, and clean architectures with a focus on code maintainability and accessibility.',
+      highlights: [
+        'Actively publishing full-stack repositories on GitHub with comprehensive documentation',
+        'Advocating for modern web standards, performance optimization, and clean architectural patterns',
+        'Building community-driven solutions to empower underrepresented tech talents'
+      ],
+      tags: ['Git', 'GitHub', 'CI/CD', 'Open Source', 'UI/UX Design', 'Mentorship']
+    }
+  ];
+
   return ( 
     <div className={styles.page}>
       {/* Hero Section */}
@@ -38,8 +81,6 @@ const About = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className={styles.content}
             >
-           
-              
               <h1 className={styles.title}>
                 Passionate <span className="highlight">Software Engineer</span> & Problem Solver
               </h1>
@@ -102,6 +143,69 @@ const About = () => {
               <p>Senior Full Stack Developer</p>
               <span className={styles.infoDetail}>Tech Lead & Mentor</span>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience & Education Journey */}
+      <section className={styles.timelineSection}>
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className={styles.timelineHeader}
+          >
+            <h2 className={styles.timelineTitle}>
+              Education & <span className="highlight">Journey</span>
+            </h2>
+            <p className={styles.timelineSubtitle}>
+              My academic progression, professional milestones, and engineering experience
+            </p>
+          </motion.div>
+
+          <div className={styles.timeline}>
+            {timelineData.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                className={styles.timelineItem}
+              >
+                <div className={styles.timelineDot}>
+                  {item.icon}
+                </div>
+                <div className={styles.timelineCard}>
+                  <div className={styles.timelineCardHeader}>
+                    <h3 className={styles.timelineRole}>{item.role}</h3>
+                    <span className={styles.timelinePeriod}>
+                      <FaCalendarAlt /> {item.period}
+                    </span>
+                  </div>
+                  <div className={styles.timelineOrg}>{item.organization}</div>
+                  <p className={styles.timelineDescription}>{item.description}</p>
+                  
+                  <ul className={styles.timelineHighlights}>
+                    {item.highlights.map((h, i) => (
+                      <li key={i} className={styles.timelineHighlight}>
+                        <FaCheckCircle className={styles.timelineHighlightIcon} />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className={styles.timelineTags}>
+                    {item.tags.map((tag, i) => (
+                      <span key={i} className={styles.timelineTag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
