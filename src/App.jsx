@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/layout/Header';
@@ -16,6 +16,51 @@ import './styles/global.css';
 const AnimatedRoutes = () => {
   const location = useLocation();
   const { direction } = useScrollNav();
+
+  useEffect(() => {
+    const routeMeta = {
+      '/': {
+        title: 'Daniel Ayen | Software Engineer & Full-Stack Developer',
+        description: 'Portfolio of Daniel Ayen, a Software Engineer and Full-Stack Developer at Injibara University. Building high-performance web applications, distributed systems, and AI-powered solutions.'
+      },
+      '/about': {
+        title: 'About | Daniel Ayen - Software Engineer',
+        description: 'Learn about Daniel Ayen, his background in Software Engineering at Injibara University, development philosophy, and core achievements.'
+      },
+      '/projects': {
+        title: 'Projects | Daniel Ayen - Software Engineer',
+        description: 'Explore full-stack applications, distributed banking systems, and AI SaaS agent showcase by Daniel Ayen.'
+      },
+      '/skills': {
+        title: 'Skills & Tech Stack | Daniel Ayen - Software Engineer',
+        description: 'Technical skills, frontend and backend frameworks, databases, and DevOps tools mastered by Daniel Ayen.'
+      },
+      '/contact': {
+        title: 'Contact | Daniel Ayen - Software Engineer',
+        description: 'Get in touch with Daniel Ayen for software engineering opportunities, collaborations, freelance projects, and inquiries.'
+      }
+    };
+
+    const current = routeMeta[location.pathname] || {
+      title: 'Daniel Ayen | Software Engineer & Full-Stack Developer',
+      description: 'Portfolio of Daniel Ayen, Software Engineer & Full-Stack Developer.'
+    };
+
+    document.title = current.title;
+
+    const descMeta = document.querySelector('meta[name="description"]');
+    if (descMeta) {
+      descMeta.setAttribute('content', current.description);
+    }
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute(
+        'href',
+        `https://portfollio-lovat-alpha.vercel.app${location.pathname === '/' ? '' : location.pathname}`
+      );
+    }
+  }, [location.pathname]);
 
   const pageVariants = {
     initial: {
