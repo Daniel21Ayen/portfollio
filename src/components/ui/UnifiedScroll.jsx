@@ -1,21 +1,19 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, useSpring, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { FaArrowUp, FaArrowDown, FaChevronDown, FaArrowUp as FaArrowUpAlt } from 'react-icons/fa';
+import { FaArrowUp, FaArrowDown, FaChevronDown } from 'react-icons/fa';
 import styles from './UnifiedScroll.module.css';
 
 const UnifiedScroll = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showIndicators, setShowIndicators] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const [showDynamicHeading, setShowDynamicHeading] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
   const rafIdRef = useRef(null);
   const lastScrollYRef = useRef(0);
   const scrollTimeoutRef = useRef(null);
   const navigationLockRef = useRef(false);
-  const lastWheelTimeRef = useRef(0);
 
   // Define all pages/sections with their labels
   const sections = [
@@ -57,7 +55,6 @@ const UnifiedScroll = () => {
       
       // Show/hide indicators based on scroll position
       setShowIndicators(winScroll > 100);
-      setShowScrollTop(winScroll > 400);
       
       // Show dynamic heading when scrolling
       if (scrollTimeoutRef.current) {
@@ -122,36 +119,11 @@ const UnifiedScroll = () => {
     }
   }, [prevSection, handleNavigation]);
 
-  // Handle wheel events for page navigation with debouncing
-  const handleWheel = useCallback((e) => {
-    const now = Date.now();
-    const timeSinceLastWheel = now - lastWheelTimeRef.current;
-    
-    // Throttle wheel events to prevent rapid page jumps (min 300ms between navigations)
-    if (timeSinceLastWheel < 300) return;
-    
-    // Only trigger navigation at top or bottom of page
-    const atTop = window.scrollY < 20;
-    const atBottom = (document.documentElement.scrollHeight - window.innerHeight - window.scrollY) < 20;
-
-    if (e.deltaY > 0 && atBottom && nextSection) {
-      e.preventDefault();
-      lastWheelTimeRef.current = now;
-      handleNavigation(nextSection.path, true);
-    } else if (e.deltaY < 0 && atTop && prevSection) {
-      e.preventDefault();
-      lastWheelTimeRef.current = now;
-      handleNavigation(prevSection.path, false);
-    }
-  }, [nextSection, prevSection, handleNavigation]);
-
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('wheel', handleWheel, { passive: false });
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('wheel', handleWheel);
       if (rafIdRef.current) {
         cancelAnimationFrame(rafIdRef.current);
       }
@@ -159,7 +131,7 @@ const UnifiedScroll = () => {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, [handleScroll, handleWheel]);
+  }, [handleScroll]);
 
   // Update active section based on current path
   useEffect(() => {
@@ -251,24 +223,6 @@ const UnifiedScroll = () => {
             <span>Scroll to explore</span>
             <FaChevronDown />
           </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            whileHover={{ scale: 1.1, y: -5 }}
-            whileTap={{ scale: 0.9 }}
-            className={styles.scrollTopBtn}
-            onClick={scrollToTop}
-            aria-label="Scroll to top"
-          >
-            <FaArrowUpAlt />
-          </motion.button>
         )}
       </AnimatePresence>
     </>

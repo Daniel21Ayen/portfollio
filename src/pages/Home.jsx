@@ -138,7 +138,7 @@ const Home = () => {
               className={styles.heroFooter}
             >
               <div className={styles.socialLinks}>
-                <a href="https://github.com/Enat-Ena-Liji" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Daniel21Ayen" target="_blank" rel="noopener noreferrer">
                   <FaGithub />
                 </a>
                 <a href="https://www.linkedin.com/in/daniel-ayen-3113643b4" target="_blank" rel="noopener noreferrer">

@@ -34,12 +34,11 @@ const Header = () => {
     // { name: 'LeetCode', icon: <SiLeetcode />, url: 'https://leetcode.com/danielayen', color: '#FFA116' },
     // { name: 'HackerRank', icon: <SiHackerrank />, url: 'https://hackerrank.com/danielayen', color: '#2EC866' },
     { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/daniel-ayen-3113643b4', color: '#0077B5' },
-    { name: 'Gmail', icon: <SiGmail />, url: 'mailto:dayen0938@gmail.com', color: '#EA4335' },
+    { name: 'Gmail', icon: <SiGmail />, url: 'mailto:danielayen2112@gmail.com', color: '#EA4335' },
   ];
 
   const resumeVersions = [
-    { format: 'pdf', label: 'PDF Resume', icon: <FaFilePdf />, size: '245 KB' },
-    { format: 'docx', label: 'Word Resume', icon: <FaFileWord />, size: '180 KB' },
+    { format: 'pdf', label: 'Download PDF', icon: <FaFilePdf />, size: '40 KB' },
   ];
 
   useEffect(() => {
@@ -92,23 +91,21 @@ const Header = () => {
     setIsOpen(false);
   };
 
-  const downloadResume = (format) => {
+  const downloadResume = (format = 'pdf') => {
     setNotification({
       type: 'success',
-      message: `Resume (${format.toUpperCase()}) downloading...`
+      message: 'Resume (PDF) downloading...'
     });
     setTimeout(() => setNotification(null), 3000);
     setShowResumeDropdown(false);
     
     // Trigger actual download
-    if (format === 'pdf') {
-      const link = document.createElement('a');
-      link.href = '/Resume.pdf';
-      link.download = 'Daniel_Resume.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+    const link = document.createElement('a');
+    link.href = '/Resume.pdf';
+    link.download = 'Daniel_Ayen_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
   
   const viewResume = () => {
@@ -152,7 +149,7 @@ const Header = () => {
               <FaCode className={styles.logoSvg} />
             </div>
             <div className={styles.logoText}>
-              {/* <span className={styles.logoName}><DaniFolio/></span> */}
+              <span className={styles.logoName}>Daniel Ayen</span>
               <span className={styles.logoSubtitle}>Full Stack Developer</span>
             </div>
           </motion.div>
@@ -392,11 +389,6 @@ const Header = () => {
           </motion.button>
         )}
       </AnimatePresence>
-
-      {/* Keyboard Shortcut Hint */}
-      <div className={styles.keyboardHint}>
-        <kbd>⌘</kbd> + <kbd>K</kbd> to search
-      </div>
     </>
   ); 
 };

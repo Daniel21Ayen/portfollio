@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ProjectCard from '../components/common/ProjectCard';
 import {
   FaSearch,
@@ -78,7 +79,7 @@ const Projects = () => {
       links: {
         github: 'https://github.com/Daniel21Ayen/newselection',
         demo: 'https://udas-demo.herokuapp.com',
-        docs: 'https://github.com/Enat-Ena-Liji/newselection#readme'
+        docs: 'https://github.com/Daniel21Ayen/newselection#readme'
       },
       stats: {
         stars: 0, forks: 0, views: 0,
@@ -422,7 +423,7 @@ const Projects = () => {
         'Comprehensive audit trail for material actions'
       ],
       images: [
-        'weather.png',
+        'tms.png',
         'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop'
       ],
       stats: {
@@ -810,12 +811,12 @@ const Projects = () => {
               Let's bring your ideas to life!
             </p>
             <div className={styles.ctaActions}>
-              <a href="/contact" className="btn btn-primary">
+              <Link to="/contact" className="btn btn-primary">
                 Start a Conversation
-              </a>
-              <a href="/skills" className="btn btn-outline">
+              </Link>
+              <Link to="/skills" className="btn btn-outline">
                 View My Skills
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

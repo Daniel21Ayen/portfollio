@@ -4,7 +4,6 @@ import {
   FaUser, FaUniversity, FaLaptopCode, FaRocket,
   FaLightbulb, FaFileDownload, FaEye
 } from 'react-icons/fa';
-import ScrollNavigationIndicators from '../components/common/ScrollNavigationIndicators';
 import { downloadResumePdf, viewResumePdf } from '../utils/resume';
 import styles from './About.module.css';
 import profilePic from '../assets/Images/8mg/about-pro.png';
@@ -46,7 +45,7 @@ const About = () => {
               </h1>
               
               <p className={styles.subtitle}>
-                I'm a strong foundation in full-stack development, I specialize in building scalable, 
+                With a strong foundation in full-stack development, I specialize in building scalable, 
                 user-centric web applications that blend creativity with technical excellence.
                 My career goal is to become a senior software engineer at an innovative company,
                 perhaps in the fintech or edtech space, while contributing to open-source projects
@@ -190,8 +189,6 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-
-      <ScrollNavigationIndicators />
     </div>
   );
 }; 

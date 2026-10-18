@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import SkillIcon from '../components/common/SkillIcon';
 import {
   FaCode,
@@ -36,13 +37,13 @@ import styles from './Skills.module.css';
 
 const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all');
  
   const categories = [
     { id: 'all', label: 'All Skills', icon: <FaLayerGroup />, color: '#64ffda' },
     { id: 'frontend', label: 'Frontend', icon: <SiReact />, color: '#61DAFB' },
     { id: 'backend', label: 'Backend', icon: <FaServer />, color: '#339933' },
     { id: 'database', label: 'Database', icon: <FaDatabase />, color: '#47A248' },
-    { id: 'mobile', label: 'Mobile', icon: <FaMobileAlt />, color: '#34B7F1' },
     { id: 'devops', label: 'DevOps', icon: <FaCloud />, color: '#2496ED' },
     { id: 'tools', label: 'Tools', icon: <FaToolbox />, color: '#F0DB4F' },
     { id: 'design', label: 'Design', icon: <SiFigma />, color: '#F24E1E' },
@@ -50,47 +51,38 @@ const Skills = () => {
 
   const allSkills = useMemo(() => [
     // Frontend
-    { name: 'React', category: 'frontend', proficiency: 95, years: 3, projects: 10, icon: <SiReact />, color: '#61DAFB', description: 'Building dynamic user interfaces with React hooks, context API, and modern patterns.' },
-    { name: 'Next.js', category: 'frontend', proficiency: 85, years: 2, projects: 4, icon: <SiNextdotjs />, color: '#000000', description: 'Server-side rendering and static site generation for React applications.' },
-    { name: 'TypeScript', category: 'frontend', proficiency: 90, years: 2, projects: 3, icon: <SiTypescript />, color: '#3178C6', description: 'Type-safe JavaScript development for scalable applications.' },
-    { name: 'JavaScript', category: 'frontend', proficiency: 95, years: 4, projects: 10, icon: <FaCode />, color: '#F7DF1E', description: 'Expert in ES6+ features, asynchronous programming, and modern JavaScript patterns.' },
-    { name: 'HTML/CSS', category: 'frontend', proficiency: 98, years: 5, projects: 10, icon: <FaLayerGroup />, color: '#E34F26', description: 'Semantic HTML5, advanced CSS3, Flexbox, Grid, and responsive design.' },
-    { name: 'Tailwind CSS', category: 'frontend', proficiency: 88, years: 2, projects: 8, icon: <SiTailwindcss />, color: '#38B2AC', description: 'Utility-first CSS framework for rapid UI development.' },
+    { name: 'React', category: 'frontend', proficiency: 95, years: 3, projects: 10, icon: <SiReact />, color: '#61DAFB', description: 'Building dynamic user interfaces with React hooks, context API, and modern component patterns.', relatedProjects: ['University Allocation System', 'Evangadi Forum', "Abe's Garage", 'AI Personal Agent'] },
+    { name: 'Next.js', category: 'frontend', proficiency: 85, years: 2, projects: 4, icon: <SiNextdotjs />, color: '#00d2ff', description: 'Server-side rendering, API routes, and static site generation for React applications.', relatedProjects: ['AI Personal Agent'] },
+    { name: 'TypeScript', category: 'frontend', proficiency: 90, years: 2, projects: 5, icon: <SiTypescript />, color: '#3178C6', description: 'Type-safe JavaScript development for scalable and maintainable applications.', relatedProjects: ['TMS Platform', 'Mastara (mh)', 'AI Personal Agent'] },
+    { name: 'JavaScript', category: 'frontend', proficiency: 95, years: 4, projects: 15, icon: <FaCode />, color: '#F7DF1E', description: 'Expert in ES6+ features, asynchronous programming, DOM, and modern JavaScript patterns.', relatedProjects: ['Evangadi Forum', "Abe's Garage", 'Weather Forecast App'] },
+    { name: 'HTML/CSS', category: 'frontend', proficiency: 98, years: 5, projects: 15, icon: <FaLayerGroup />, color: '#E34F26', description: 'Semantic HTML5, CSS3, Flexbox, CSS Grid, animations, and responsive design systems.', relatedProjects: ['Portfolio Website', "Abe's Garage", 'Evangadi Forum'] },
+    { name: 'Tailwind CSS', category: 'frontend', proficiency: 88, years: 2, projects: 8, icon: <SiTailwindcss />, color: '#38B2AC', description: 'Utility-first CSS framework for rapid, responsive UI development.', relatedProjects: ['AI Personal Agent'] },
 
     // Backend
-    { name: 'Node.js', category: 'backend', proficiency: 92, years: 3, projects: 8, icon: <SiNodedotjs />, color: '#339933', description: 'Building scalable server-side applications and APIs.' },
-    { name: 'Express', category: 'backend', proficiency: 90, years: 3, projects: 12, icon: <SiExpress />, color: '#000000', description: 'Minimalist web framework for Node.js applications.' },
-    { name: 'Python', category: 'backend', proficiency: 80, years: 2, projects: 1, icon: <SiPython />, color: '#3776AB', description: 'Backend development, scripting, and data analysis.' },
-    { name: 'Java', category: 'backend', proficiency: 75, years: 3, projects: 5, icon: <FaJava />, color: '#007396', description: 'Object-oriented programming and enterprise applications.' },
-    { name: 'C++', category: 'backend', proficiency: 70, years: 2, projects: 1, icon: <SiCplusplus />, color: '#00599C', description: 'System programming and performance-critical applications.' },
+    { name: 'Node.js', category: 'backend', proficiency: 92, years: 3, projects: 12, icon: <SiNodedotjs />, color: '#339933', description: 'Building high-performance server-side applications, REST APIs, and event-driven microservices.', relatedProjects: ['University Allocation System', 'Evangadi Forum', 'TMS Platform'] },
+    { name: 'Express', category: 'backend', proficiency: 90, years: 3, projects: 12, icon: <SiExpress />, color: '#64ffda', description: 'Minimalist web framework for Node.js routing, middleware, and API architectures.', relatedProjects: ['University Allocation System', 'Evangadi Forum', "Abe's Garage"] },
+    { name: 'Python', category: 'backend', proficiency: 80, years: 2, projects: 3, icon: <SiPython />, color: '#3776AB', description: 'Backend development, automated scripting, algorithms, and data processing.', relatedProjects: ['Algorithm Analysis', 'Data Processing Tools'] },
+    { name: 'Java', category: 'backend', proficiency: 75, years: 3, projects: 5, icon: <FaJava />, color: '#007396', description: 'Object-oriented programming, RMI remote objects, RPC, and multithreading.', relatedProjects: ['Global Banking System'] },
+    { name: 'C++', category: 'backend', proficiency: 70, years: 2, projects: 2, icon: <SiCplusplus />, color: '#00599C', description: 'System programming, performance-critical applications, and data structure implementations.', relatedProjects: ['Data Structures & Algorithms'] },
 
     // Database
-    { name: 'MySQL', category: 'database', proficiency: 88, years: 3, projects: 12, icon: <SiMysql />, color: '#4479A1', description: 'Relational database design, optimization, and administration.' },
-    { name: 'PostgreSQL', category: 'database', proficiency: 85, years: 2, projects: 9, icon: <SiPostgresql />, color: '#336791', description: 'Advanced SQL, transactions, and complex queries.' },
-    { name: 'MongoDB', category: 'database', proficiency: 82, years: 2, projects: 7, icon: <SiMongodb />, color: '#47A248', description: 'NoSQL database for flexible document storage.' },
+    { name: 'PostgreSQL', category: 'database', proficiency: 88, years: 2, projects: 9, icon: <SiPostgresql />, color: '#336791', description: 'Advanced SQL, transaction isolation, SELECT FOR UPDATE locking, and relational schema design.', relatedProjects: ['Global Banking System', 'TMS Platform', 'Mastara (mh)'] },
+    { name: 'MySQL', category: 'database', proficiency: 88, years: 3, projects: 12, icon: <SiMysql />, color: '#4479A1', description: 'Relational database modeling, query optimization, indexing, and foreign key cascades.', relatedProjects: ['Evangadi Forum', "Abe's Garage"] },
+    { name: 'MongoDB', category: 'database', proficiency: 82, years: 2, projects: 7, icon: <SiMongodb />, color: '#47A248', description: 'NoSQL document storage, aggregation pipelines, and flexible data modeling.', relatedProjects: ['AI Personal Agent Backend'] },
 
     // DevOps & Tools
-    { name: 'Docker', category: 'devops', proficiency: 78, years: 1, projects: 2, icon: <SiDocker />, color: '#2496ED', description: 'Containerization and deployment automation.' },
-    { name: 'Git', category: 'tools', proficiency: 95, years: 2, projects: 20, icon: <SiGit />, color: '#F05032', description: 'Version control, branching strategies, and collaboration.' },
-    { name: 'Jira', category: 'tools', proficiency: 85, years: 2, projects: 15, icon: <SiJira />, color: '#0052CC', description: 'Project management and agile development workflows.' },
+    { name: 'Docker', category: 'devops', proficiency: 78, years: 1, projects: 4, icon: <SiDocker />, color: '#2496ED', description: 'Containerization, multi-stage Dockerfiles, and environment isolation.', relatedProjects: ['Global Banking System', 'TMS Platform'] },
+    { name: 'Git', category: 'tools', proficiency: 95, years: 3, projects: 20, icon: <SiGit />, color: '#F05032', description: 'Version control, Git flow branching strategies, rebasing, and GitHub collaboration.', relatedProjects: ['All Projects', 'Open Source'] },
+    { name: 'Jira', category: 'tools', proficiency: 85, years: 2, projects: 15, icon: <SiJira />, color: '#0052CC', description: 'Agile development, scrum sprints, issue tracking, and backlog management.', relatedProjects: ['University Allocation System', 'TMS Platform'] },
 
     // Design
-    { name: 'Figma', category: 'design', proficiency: 80, years: 2, projects: 8, icon: <SiFigma />, color: '#F24E1E', description: 'UI/UX design, prototyping, and design systems.' },
+    { name: 'Figma', category: 'design', proficiency: 80, years: 2, projects: 8, icon: <SiFigma />, color: '#F24E1E', description: 'UI/UX design, interactive prototyping, design tokens, and wireframing.', relatedProjects: ['Mastara App Design', 'Garage System UI'] },
   ], []);
 
-  const categoryStats = useMemo(() => {
-    const stats = {};
-    categories.forEach(cat => {
-      if (cat.id !== 'all') {
-        const categorySkills = allSkills.filter(skill => skill.category === cat.id);
-        stats[cat.id] = {
-          count: categorySkills.length,
-          totalProjects: categorySkills.reduce((sum, skill) => sum + skill.projects, 0),
-        };
-      }
-    });
-    return stats;
-  }, [allSkills, categories]);
+  const displayedSkills = useMemo(() => {
+    if (selectedCategory === 'all') return allSkills;
+    return allSkills.filter(skill => skill.category === selectedCategory);
+  }, [allSkills, selectedCategory]);
 
   return (
     <div className={styles.page}>
@@ -115,111 +107,37 @@ const Skills = () => {
         </div>
       </section>
 
-      {/* Category Breakdown */}
-      {/* <section className={styles.breakdown}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Skill Distribution</h2>
-            <p className={styles.sectionDescription}>
-              Breakdown of my skills across different technology categories
-            </p>
-          </div>
-
-          <div className={styles.breakdownGrid}>
-            {categories
-              .filter(cat => cat.id !== 'all')
-              .map((category, index) => {
-                const stats = categoryStats[category.id] || { count: 0, totalProjects: 0 };
-                const avgYears = stats.count > 0
-                  ? Math.round(
-                      allSkills
-                        .filter(s => s.category === category.id)
-                        .reduce((sum, s) => sum + s.years, 0) / stats.count * 10
-                    ) / 10
-                  : 0;
-
-                return (
-                  <motion.div
-                    key={category.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.08 }}
-                    className={styles.breakdownCard}
-                    style={{ '--category-color': category.color }}
-                    data-empty={stats.count === 0}
-                  >
-                    <div className={styles.breakdownHeader}>
-                      <div className={styles.categoryIcon} style={{ color: category.color }}>
-                        {category.icon}
-                      </div>
-                      <div className={styles.categoryInfo}>
-                        <h3 className={styles.categoryName}>{category.label}</h3>
-                        <span className={styles.skillCount}>{stats.count} skills</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.breakdownStats}>
-                      <div className={styles.stat}>
-                        <FaProjectDiagram />
-                        <div>
-                          <span className={styles.statValue}>{stats.totalProjects}</span>
-                          <span className={styles.statLabel}>Projects</span>
-                        </div>
-                      </div>
-                      <div className={styles.stat}>
-                        <FaCalendarAlt />
-                        <div>
-                          <span className={styles.statValue}>{avgYears}</span>
-                          <span className={styles.statLabel}>Avg Years</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className={styles.breakdownSkills}>
-                      {stats.count > 0 ? (
-                        <>
-                          {allSkills
-                            .filter(skill => skill.category === category.id)
-                            .slice(0, 3)
-                            .map(skill => (
-                              <span key={skill.name} className={styles.skillTag}>
-                                {skill.name}
-                              </span>
-                            ))}
-                          {stats.count > 3 && (
-                            <span className={styles.moreSkills}>+{stats.count - 3} more</span>
-                          )}
-                        </>
-                      ) : (
-                        <span className={styles.emptySkills}>No skills in this category yet</span>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              })}
-          </div>
-        </div>
-      </section> */}
-
       {/* Interactive Skill Icons */}
       <section className={styles.interactive}>
         <div className="container">
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Interactive Skill Visualization</h2>
             <p className={styles.sectionDescription}>
-              Click on any skill icon to view detailed information
+              Filter by category or click on any skill icon to view details and related projects
             </p>
           </div>
 
+          {/* Category Filter Tabs */}
+          <div className={styles.filterContainer}>
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                className={`${styles.filterBtn} ${selectedCategory === category.id ? styles.active : ''}`}
+                onClick={() => setSelectedCategory(category.id)}
+              >
+                {category.icon}
+                <span>{category.label}</span>
+              </button>
+            ))}
+          </div>
+
           <div className={styles.interactiveGrid}>
-            {allSkills.slice(0, 12).map((skill, index) => (
+            {displayedSkills.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05 }}
                 whileHover={{ y: -10 }}
                 className={styles.interactiveItem}
                 onClick={() => setActiveSkill(skill)}
@@ -297,10 +215,15 @@ const Skills = () => {
               <div className={styles.skillDetails}>
                 <h3 className={styles.detailsTitle}>Related Projects</h3>
                 <div className={styles.relatedProjects}>
-                  {Array.from({ length: Math.min(3, activeSkill.projects) }).map((_, index) => (
-                    <div key={index} className={styles.projectChip}>
-                      Project {index + 1}
-                    </div>
+                  {(activeSkill.relatedProjects || ['Various Projects']).map((projectTitle, index) => (
+                    <Link
+                      to="/projects"
+                      key={index}
+                      className={styles.projectChip}
+                      onClick={() => setActiveSkill(null)}
+                    >
+                      {projectTitle}
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -324,12 +247,12 @@ const Skills = () => {
               and innovative projects.
             </p>
             <div className={styles.ctaActions}>
-              <a href="/projects" className="btn btn-primary">
+              <Link to="/projects" className="btn btn-primary">
                 View My Projects
-              </a>
-              <a href="/contact" className="btn btn-outline">
+              </Link>
+              <Link to="/contact" className="btn btn-outline">
                 Start a Conversation
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
