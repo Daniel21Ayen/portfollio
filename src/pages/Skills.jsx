@@ -9,7 +9,6 @@ import {
   FaMobileAlt,
   FaCloud,
   FaToolbox,
-  FaLayerGroup,
   FaProjectDiagram,
   FaUsers,
   FaJava,
@@ -37,17 +36,6 @@ import styles from './Skills.module.css';
 
 const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('all');
- 
-  const categories = [
-    { id: 'all', label: 'All Skills', icon: <FaLayerGroup />, color: '#64ffda' },
-    { id: 'frontend', label: 'Frontend', icon: <SiReact />, color: '#61DAFB' },
-    { id: 'backend', label: 'Backend', icon: <FaServer />, color: '#339933' },
-    { id: 'database', label: 'Database', icon: <FaDatabase />, color: '#47A248' },
-    { id: 'devops', label: 'DevOps', icon: <FaCloud />, color: '#2496ED' },
-    { id: 'tools', label: 'Tools', icon: <FaToolbox />, color: '#F0DB4F' },
-    { id: 'design', label: 'Design', icon: <SiFigma />, color: '#F24E1E' },
-  ];
 
   const allSkills = useMemo(() => [
     // Frontend
@@ -79,11 +67,6 @@ const Skills = () => {
     { name: 'Figma', category: 'design', proficiency: 80, years: 2, projects: 8, icon: <SiFigma />, color: '#F24E1E', description: 'UI/UX design, interactive prototyping, design tokens, and wireframing.', relatedProjects: ['Mastara App Design', 'Garage System UI'] },
   ], []);
 
-  const displayedSkills = useMemo(() => {
-    if (selectedCategory === 'all') return allSkills;
-    return allSkills.filter(skill => skill.category === selectedCategory);
-  }, [allSkills, selectedCategory]);
-
   return (
     <div className={styles.page}>
       {/* Hero Section */}
@@ -113,26 +96,12 @@ const Skills = () => {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Interactive Skill Visualization</h2>
             <p className={styles.sectionDescription}>
-              Filter by category or click on any skill icon to view details and related projects
+              Click on any skill icon to view technical details, proficiency, and related projects
             </p>
           </div>
 
-          {/* Category Filter Tabs */}
-          <div className={styles.filterContainer}>
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                className={`${styles.filterBtn} ${selectedCategory === category.id ? styles.active : ''}`}
-                onClick={() => setSelectedCategory(category.id)}
-              >
-                {category.icon}
-                <span>{category.label}</span>
-              </button>
-            ))}
-          </div>
-
           <div className={styles.interactiveGrid}>
-            {displayedSkills.map((skill, index) => (
+            {allSkills.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 initial={{ opacity: 0, scale: 0 }}
@@ -217,11 +186,11 @@ const Skills = () => {
                 <div className={styles.relatedProjects}>
                   {(activeSkill.relatedProjects || ['Various Projects']).map((projectTitle, index) => (
                     <Link
-                      to={`/projects?search=${encodeURIComponent(projectTitle)}`}
+                      to="/projects"
                       key={index}
                       className={styles.projectChip}
                       onClick={() => setActiveSkill(null)}
-                      title={`View ${projectTitle} on Projects page`}
+                      title={`View ${projectTitle} in Projects`}
                     >
                       {projectTitle}
                     </Link>

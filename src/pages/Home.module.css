@@ -220,46 +220,17 @@
 .mongodb { bottom: 12%; right: 8%; }
 .tailwind { top: 25%; left: 50%; transform: translateX(-50%); }
 
-/* ===== HERO FOOTER - FIXED ALIGNMENT ===== */
+/* ===== HERO FOOTER - CLEAN ALIGNMENT ===== */
 .heroFooter {
   position: absolute;
   bottom: 2rem;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0 var(--space-xl);
   z-index: 2;
-}
-
-.socialLinks {
-  display: flex;
-  gap: var(--space-md);
-}
-
-.socialLinks a {
-  color: var(--text-secondary);
-  font-size: 1.4rem;
-  transition: all var(--transition-base);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.socialLinks a:hover {
-  color: var(--primary);
-  transform: translateY(-3px);
-}
-
-.scrollDown {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: 0.9rem;
-  color: var(--primary);
-  animation: bounce 2s infinite;
-  white-space: nowrap;
 }
 
 .currentTime {

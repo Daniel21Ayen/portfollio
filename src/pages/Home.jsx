@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaArrowDown, FaCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt } from 'react-icons/fa';
 import {SiReact,SiNodedotjs,SiTypescript,SiMongodb,SiTailwindcss} from 'react-icons/si';
 import styles from './Home.module.css';
 import profileImage from '../assets/Images/8mg/profiles.webp';
@@ -129,15 +129,6 @@ const Home = () => {
               transition={{ delay: 0.6 }}
               className={styles.heroFooter}
             >
-              <div className={styles.scrollDown}>
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <FaArrowDown />
-                </motion.div>
-                <span>Scroll to explore</span>
-              </div>
               <div className={styles.currentTime}>
                 <FaCalendarAlt />
                 <span>{currentTime}</span>

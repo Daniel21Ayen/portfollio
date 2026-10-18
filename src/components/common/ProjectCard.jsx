@@ -12,7 +12,7 @@ import {SiReact, SiPython,
 } from 'react-icons/si';
 import styles from './ProjectCard.module.css';
 
-const ProjectCard = ({ project, onTagClick }) => {
+const ProjectCard = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const [videoPlaying, setVideoPlaying] = useState(false);
@@ -200,19 +200,10 @@ const ProjectCard = ({ project, onTagClick }) => {
 
           <div className={styles.tech}>
             {technologies.slice(0, 4).map((tech) => (
-              <button
-                key={tech}
-                type="button"
-                className={styles.techTag}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (onTagClick) onTagClick(tech);
-                }}
-                title={`Filter projects by ${tech}`}
-              >
+              <span key={tech} className={styles.techTag}>
                 {techIcons[tech] || <FaCode />}
                 <span>{tech}</span>
-              </button>
+              </span>
             ))}
             {technologies.length > 4 && (
               <span className={styles.techMore}>
