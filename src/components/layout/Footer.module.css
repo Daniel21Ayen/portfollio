@@ -4,9 +4,10 @@
   position: relative;
   background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   color: var(--text-primary);
-  padding: 4rem 2rem 2rem;
+  padding: 2.5rem 1.5rem;
   margin-top: auto;
   overflow: hidden;
+  border-top: 1px solid var(--border-color);
 }
 
 .container {
@@ -21,7 +22,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  margin: 2rem 0;
+  margin: 0 auto;
   align-items: center;
 }
 
@@ -48,69 +49,6 @@
   color: var(--primary);
 }
 
-/* Footer Bottom */
-.footerBottom {
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--border-color);
-}
-
-.bottomContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-lg);
-}
-
-.copyright {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.copyrightIcon {
-  font-size: 0.8rem;
-}
-
-.madeWith {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.heartIcon {
-  color: #ff4757;
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-.coffeeIcon {
-  color: #ffa502;
-}
-
-.footerLinks {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.footerLinks a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color var(--transition-base);
-}
-
-.footerLinks a:hover {
-  color: var(--primary);
-}
-
-.divider {
-  color: var(--text-muted);
-}
-
 /* Floating Elements */
 .floatingElements {
   position: absolute;
@@ -124,7 +62,7 @@
 
 .floatingElement {
   position: absolute;
-  color: rgba(100, 255, 218, 0.1);
+  color: rgba(100, 255, 218, 0.08);
   font-size: 1rem;
   font-family: var(--font-mono);
   user-select: none;
@@ -148,12 +86,6 @@
   font-size: 1rem;
 }
 
-/* Animations */
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
 /* Responsive */
 @media (min-width: 768px) {
   .contactInfo {
@@ -161,23 +93,10 @@
     justify-content: center;
     gap: var(--space-2xl);
   }
-  
-  .bottomContent {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-@media (max-width: 640px) {
-  .footerLinks {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .heartIcon,
   .floatingElement {
     animation: none !important;
   }
