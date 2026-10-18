@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp, FaChevronDown } from 'react-icons/fa';
+import { useScrollNav } from '../../context/ScrollNavigationContext';
 import styles from './UnifiedScroll.module.css';
 
 const UnifiedScroll = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isNearBottom, setIsNearBottom] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { nextRoute, triggerNavigate } = useScrollNav();
 
   useEffect(() => {
     let ticking = false;
@@ -17,6 +20,7 @@ const UnifiedScroll = () => {
 
       setScrollProgress(scrolled);
       setShowScrollTop(winScroll > 320);
+      setIsNearBottom(height > 0 && winScroll >= height - 75);
       ticking = false;
     };
 
@@ -48,6 +52,27 @@ const UnifiedScroll = () => {
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
+
+      {/* Floating Cue for Next Page at Bottom */}
+      <AnimatePresence>
+        {isNearBottom && nextRoute && (
+          <motion.button
+            type="button"
+            initial={{ opacity: 0, y: 15, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 15, x: '-50%' }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => triggerNavigate('down')}
+            className={styles.nextPageCue}
+            aria-label={`Scroll to next section: ${nextRoute.label}`}
+          >
+            <span>Scroll for {nextRoute.label}</span>
+            <FaChevronDown className={styles.nextCueIcon} />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Floating Smooth Back-to-Top Button */}
       <AnimatePresence>

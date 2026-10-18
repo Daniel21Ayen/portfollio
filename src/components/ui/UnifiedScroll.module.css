@@ -47,6 +47,51 @@
   border-color: var(--primary);
 }
 
+/* Next Page Transition Cue at Bottom Center */
+.nextPageCue {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.35rem;
+  background: rgba(10, 25, 47, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(100, 255, 218, 0.4);
+  border-radius: var(--radius-full);
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 998;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 16px rgba(100, 255, 218, 0.25);
+  transition: all var(--transition-base);
+  user-select: none;
+}
+
+.nextPageCue:hover {
+  background: rgba(100, 255, 218, 0.12);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 24px rgba(100, 255, 218, 0.45);
+}
+
+.nextCueIcon {
+  font-size: 0.85rem;
+  animation: bounceDown 1.8s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
 @media (max-width: 640px) {
   .scrollTopBtn {
     bottom: 1.25rem;
@@ -55,10 +100,19 @@
     height: 44px;
     font-size: 1rem;
   }
+
+  .nextPageCue {
+    bottom: 1.25rem;
+    font-size: 0.8rem;
+    padding: 0.55rem 1.05rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .scrollProgressFill {
     transition: none;
+  }
+  .nextCueIcon {
+    animation: none;
   }
 }

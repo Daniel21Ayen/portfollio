@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import UnifiedScroll from './components/ui/UnifiedScroll';
+import { ScrollNavigationProvider, useScrollNav } from './context/ScrollNavigationContext';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -12,31 +13,32 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import './styles/global.css';
 
-// ScrollToTop component to handle page scroll position
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    // Scroll to top on route change
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname]);
-
-  return null;
-};
-
 const AnimatedRoutes = () => {
   const location = useLocation();
+  const { direction } = useScrollNav();
 
   const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 }
+    initial: {
+      opacity: 0,
+      y: direction === 'down' ? 32 : -32,
+      filter: 'blur(3px)'
+    },
+    in: {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)'
+    },
+    out: {
+      opacity: 0,
+      y: direction === 'down' ? -32 : 32,
+      filter: 'blur(3px)'
+    }
   };
 
   const pageTransition = {
     type: 'tween',
-    ease: 'anticipate',
-    duration: 0.5 
+    ease: [0.22, 1, 0.36, 1],
+    duration: 0.42
   };
 
   return (
@@ -136,15 +138,16 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <ScrollToTop />
-        <main className="main-content">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-        <UnifiedScroll />
-      </div>
+      <ScrollNavigationProvider>
+        <div className="App">
+          <Header />
+          <main className="main-content">
+            <AnimatedRoutes />
+          </main>
+          <Footer />
+          <UnifiedScroll />
+        </div>
+      </ScrollNavigationProvider>
     </Router>
   );
 }
