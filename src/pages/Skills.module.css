@@ -281,20 +281,42 @@
 }
 
 .interactiveItem {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
   cursor: pointer;
   padding: var(--space-sm);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   transition: all var(--transition-base);
   width: 100%;
   max-width: 140px;
 }
 
 .interactiveItem:hover {
-  background: rgba(100, 255, 218, 0.04);
+  background: rgba(100, 255, 218, 0.05);
+  transform: translateY(-4px);
+}
+
+.itemActive {
+  background: rgba(100, 255, 218, 0.08);
+  box-shadow: 0 0 0 2px var(--skill-color, var(--primary)), 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.itemActive::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid var(--skill-color, var(--primary));
+  z-index: 2;
 }
 
 .interactiveName {
@@ -306,164 +328,186 @@
   word-break: break-word;
 }
 
-/* ===== MODAL ===== */
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 25, 47, 0.95);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: var(--z-modal);
-  padding: var(--space-md);
-}
-
-.modal {
-  background: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: 20px;
-  max-width: 500px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+/* ===== DYNAMIC DETAIL PANEL (IN-FLOW, NEVER FIXED) ===== */
+.dynamicDetailPanel {
+  margin-top: var(--space-2xl);
+  background: var(--bg-card);
+  border: 1px solid var(--skill-color, var(--border-color));
+  border-radius: var(--radius-xl);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(100, 255, 218, 0.08);
+  overflow: hidden;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.modalHeader {
+.dynamicDetailHeader {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: var(--space-xl) var(--space-xl) var(--space-md);
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
   border-bottom: 1px solid var(--border-color);
+  background: rgba(10, 25, 47, 0.5);
   gap: var(--space-md);
 }
 
-.modalTitleSection {
+.dynamicTitleSection {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   flex: 1;
   min-width: 0;
 }
 
-.modalIcon {
-  font-size: 2.5rem;
+.dynamicIconWrapper {
+  font-size: 2.4rem;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.modalTitle {
-  font-size: 1.5rem;
+.dynamicTitleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.dynamicTitle {
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 0.25rem;
+  margin: 0;
   line-height: 1.2;
 }
 
-.modalCategory {
+.dynamicCategory {
   display: inline-block;
-  padding: 0.25rem 0.7rem;
-  background: var(--bg-card);
+  padding: 0.2rem 0.65rem;
+  background: rgba(100, 255, 218, 0.08);
   color: var(--primary);
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.modalClose {
+.dynamicProgressBarTrack {
+  width: 180px;
+  max-width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.dynamicProgressBarFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+
+.dynamicCloseBtn {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
-  background: var(--bg-card);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-color);
-  color: var(--primary);
-  font-size: 1.3rem;
+  color: var(--text-muted);
+  font-size: 1.4rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-base);
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.modalClose:hover {
+.dynamicCloseBtn:hover {
   background: var(--primary);
   color: var(--bg-primary);
+  border-color: var(--primary);
   transform: rotate(90deg);
 }
 
-.modalContent {
-  padding: var(--space-lg) var(--space-xl) var(--space-xl);
-}
-
-.skillOverview {
-  margin-bottom: var(--space-xl);
-}
-
-.overviewDescription {
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: var(--space-lg);
-  font-size: 0.95rem;
-}
-
-.overviewStats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-sm);
-}
-
-.overviewStat {
-  text-align: center;
-  padding: var(--space-md) var(--space-sm);
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-}
-
-.overviewStat .statValue {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-
-.overviewStat .statLabel {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  white-space: normal;
-}
-
-.skillDetails {
+.dynamicDetailBody {
+  padding: var(--space-xl);
   display: flex;
   flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.dynamicDescription {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.dynamicStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
 }
 
-.detailsTitle {
-  font-size: 1.1rem;
+.dynamicStatItem {
+  text-align: center;
+  padding: var(--space-md) var(--space-sm);
+  background: rgba(10, 25, 47, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dynamicStatValue {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.dynamicStatLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.dynamicRelatedSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.dynamicRelatedTitle {
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
 }
 
-.relatedProjects {
+.dynamicProjectsList {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: 0.5rem;
 }
 
-.projectChip {
+.dynamicProjectChip {
   padding: 0.4rem 0.9rem;
-  background: var(--bg-card);
+  background: rgba(100, 255, 218, 0.06);
   color: var(--primary);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  font-size: 0.8rem;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
   font-weight: 500;
   text-decoration: none;
   transition: all var(--transition-base);
@@ -471,8 +515,8 @@
   align-items: center;
 }
 
-.projectChip:hover {
-  background: rgba(100, 255, 218, 0.15);
+.dynamicProjectChip:hover {
+  background: rgba(100, 255, 218, 0.16);
   border-color: var(--primary);
   transform: translateY(-2px);
 }
@@ -721,24 +765,31 @@
     font-size: 0.75rem;
   }
 
-  .modalHeader {
-    padding: var(--space-lg) var(--space-md) var(--space-sm);
-  }
-
-  .modalContent {
+  .dynamicDetailHeader {
     padding: var(--space-md);
   }
 
-  .modalTitle {
-    font-size: 1.25rem;
+  .dynamicDetailBody {
+    padding: var(--space-md);
+    gap: var(--space-md);
   }
 
-  .overviewStat .statValue {
-    font-size: 1.25rem;
+  .dynamicIconWrapper {
+    width: 44px;
+    height: 44px;
+    font-size: 1.8rem;
   }
 
-  .overviewStat .statLabel {
-    font-size: 0.7rem;
+  .dynamicTitle {
+    font-size: 1.15rem;
+  }
+
+  .dynamicProgressBarTrack {
+    width: 120px;
+  }
+
+  .dynamicStatValue {
+    font-size: 1.1rem;
   }
 
   .ctaTitle {

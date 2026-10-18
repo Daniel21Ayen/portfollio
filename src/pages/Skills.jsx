@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SkillIcon from '../components/common/SkillIcon';
 import {
@@ -37,6 +37,7 @@ import styles from './Skills.module.css';
 
 const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
+  const detailRef = useRef(null);
 
   const allSkills = useMemo(() => [
     // Frontend
@@ -68,6 +69,19 @@ const Skills = () => {
     { name: 'Figma', category: 'design', proficiency: 80, years: 2, projects: 8, icon: <SiFigma />, color: '#F24E1E', description: 'UI/UX design, interactive prototyping, design tokens, and wireframing.', relatedProjects: ['Mastara App Design', 'Garage System UI'] },
   ], []);
 
+  const handleSelectSkill = (skill) => {
+    if (activeSkill?.name === skill.name) {
+      setActiveSkill(null);
+    } else {
+      setActiveSkill(skill);
+      setTimeout(() => {
+        if (detailRef.current) {
+          detailRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
+    }
+  };
+
   return (
     <div className={styles.page}>
       {/* Hero Section */}
@@ -85,123 +99,144 @@ const Skills = () => {
 
             <p className={styles.heroSubtitle}>
               A comprehensive overview of my technical skills, proficiency levels,
-              and hands-on experience with modern technologies.
+              and hands-on experience with modern technologies. Click any skill icon to view details in the dynamic space below.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Interactive Skill Icons */}
+      {/* Interactive Skill Icons Grid */}
       <section className={styles.interactive}>
         <div className="container">
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Interactive Skill Visualization</h2>
             <p className={styles.sectionDescription}>
-              Click on any skill icon to view technical details, proficiency, and related projects
+              Click on any skill icon to inspect technical details, proficiency, and related projects in the dynamic space below
             </p>
           </div>
 
           <div className={styles.interactiveGrid}>
-            {allSkills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -10 }}
-                className={styles.interactiveItem}
-                onClick={() => setActiveSkill(skill)}
-              >
-                <SkillIcon
-                  skill={skill.name}
-                  level={skill.proficiency}
-                  category={skill.category}
-                  size="medium"
-                  interactive={true}
-                />
-                <span className={styles.interactiveName}>{skill.name}</span>
-              </motion.div>
-            ))}
+            {allSkills.map((skill, index) => {
+              const isActive = activeSkill?.name === skill.name;
+              return (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.04 }}
+                  whileHover={{ y: -8 }}
+                  className={`${styles.interactiveItem} ${isActive ? styles.itemActive : ''}`}
+                  style={{ '--skill-color': skill.color }}
+                  onClick={() => handleSelectSkill(skill)}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isActive}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleSelectSkill(skill);
+                    }
+                  }}
+                >
+                  <SkillIcon
+                    skill={skill.name}
+                    level={skill.proficiency}
+                    category={skill.category}
+                    size="medium"
+                    interactive={false}
+                  />
+                  <span className={styles.interactiveName}>{skill.name}</span>
+                </motion.div>
+              );
+            })}
           </div>
+
+          {/* Dynamic Detail Space: Updates in-place, NOT in a fixed space! */}
+          <AnimatePresence mode="wait">
+            {activeSkill && (
+              <motion.div
+                ref={detailRef}
+                key={activeSkill.name}
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -15, scale: 0.98 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className={styles.dynamicDetailPanel}
+                style={{ '--skill-color': activeSkill.color }}
+              >
+                <div className={styles.dynamicDetailHeader}>
+                  <div className={styles.dynamicTitleSection}>
+                    <div className={styles.dynamicIconWrapper} style={{ color: activeSkill.color }}>
+                      {activeSkill.icon}
+                    </div>
+                    <div>
+                      <div className={styles.dynamicTitleRow}>
+                        <h3 className={styles.dynamicTitle}>{activeSkill.name}</h3>
+                        <span className={styles.dynamicCategory}>{activeSkill.category}</span>
+                      </div>
+                      <div className={styles.dynamicProgressBarTrack}>
+                        <motion.div
+                          className={styles.dynamicProgressBarFill}
+                          initial={{ width: 0 }}
+                          animate={{ width: `${activeSkill.proficiency}%` }}
+                          transition={{ duration: 0.6, ease: 'easeOut' }}
+                          style={{ backgroundColor: activeSkill.color }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className={styles.dynamicCloseBtn}
+                    onClick={() => setActiveSkill(null)}
+                    aria-label="Close detail"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className={styles.dynamicDetailBody}>
+                  <p className={styles.dynamicDescription}>{activeSkill.description}</p>
+
+                  <div className={styles.dynamicStatsGrid}>
+                    <div className={styles.dynamicStatItem}>
+                      <span className={styles.dynamicStatValue} style={{ color: activeSkill.color }}>
+                        {activeSkill.proficiency}%
+                      </span>
+                      <span className={styles.dynamicStatLabel}>Proficiency</span>
+                    </div>
+                    <div className={styles.dynamicStatItem}>
+                      <span className={styles.dynamicStatValue}>{activeSkill.years} Years</span>
+                      <span className={styles.dynamicStatLabel}>Experience</span>
+                    </div>
+                    <div className={styles.dynamicStatItem}>
+                      <span className={styles.dynamicStatValue}>{activeSkill.projects} Projects</span>
+                      <span className={styles.dynamicStatLabel}>Delivered</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.dynamicRelatedSection}>
+                    <h4 className={styles.dynamicRelatedTitle}>Related Projects</h4>
+                    <div className={styles.dynamicProjectsList}>
+                      {(activeSkill.relatedProjects || ['Various Projects']).map((projectTitle, index) => (
+                        <Link
+                          to="/projects"
+                          key={index}
+                          className={styles.dynamicProjectChip}
+                          title={`View ${projectTitle} in Projects`}
+                        >
+                          {projectTitle}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
-
-      {/* Skill Detail Modal */}
-      {activeSkill && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className={styles.modalOverlay}
-          onClick={() => setActiveSkill(null)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, y: 50 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.9, y: 50 }}
-            className={styles.modal}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={styles.modalHeader}>
-              <div className={styles.modalTitleSection}>
-                <div className={styles.modalIcon} style={{ color: activeSkill.color }}>
-                  {activeSkill.icon}
-                </div>
-                <div>
-                  <h2 className={styles.modalTitle}>{activeSkill.name}</h2>
-                  <span className={styles.modalCategory}>{activeSkill.category}</span>
-                </div>
-              </div>
-
-              <button
-                className={styles.modalClose}
-                onClick={() => setActiveSkill(null)}
-                aria-label="Close"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className={styles.modalContent}>
-              <div className={styles.skillOverview}>
-                <p className={styles.overviewDescription}>{activeSkill.description}</p>
-
-                <div className={styles.overviewStats}>
-                  <div className={styles.overviewStat}>
-                    <div className={styles.statValue}>{activeSkill.proficiency}%</div>
-                    <div className={styles.statLabel}>Proficiency</div>
-                  </div>
-                  <div className={styles.overviewStat}>
-                    <div className={styles.statValue}>{activeSkill.years}</div>
-                    <div className={styles.statLabel}>Years Experience</div>
-                  </div>
-                  <div className={styles.overviewStat}>
-                    <div className={styles.statValue}>{activeSkill.projects}</div>
-                    <div className={styles.statLabel}>Projects</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.skillDetails}>
-                <h3 className={styles.detailsTitle}>Related Projects</h3>
-                <div className={styles.relatedProjects}>
-                  {(activeSkill.relatedProjects || ['Various Projects']).map((projectTitle, index) => (
-                    <Link
-                      to="/projects"
-                      key={index}
-                      className={styles.projectChip}
-                      onClick={() => setActiveSkill(null)}
-                      title={`View ${projectTitle} in Projects`}
-                    >
-                      {projectTitle}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
 
       {/* CTA Section */}
       <section className={styles.cta}>
