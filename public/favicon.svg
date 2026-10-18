@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64ffda"/>
+      <stop offset="100%" stop-color="#00d2ff"/>
+    </linearGradient>
+  </defs>
   <rect width="64" height="64" rx="14" fill="#0a192f"/>
-  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#64ffda" stroke-width="2" stroke-opacity="0.5"/>
-  <path d="M20 22 L12 32 L20 42" fill="none" stroke="#64ffda" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M44 22 L52 32 L44 42" fill="none" stroke="#64ffda" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="32" y="39" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="20" fill="#e6f1ff">D</text>
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="url(#favGrad)" stroke-width="2.5" stroke-opacity="0.8"/>
+  <path d="M17 24 L10 32 L17 40" fill="none" stroke="url(#favGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M47 24 L54 32 L47 40" fill="none" stroke="url(#favGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="32" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-weight="800" font-size="18" letter-spacing="-0.5" fill="#e6f1ff">DA</text>
 </svg>

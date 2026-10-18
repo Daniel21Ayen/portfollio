@@ -137,20 +137,33 @@ const Header = () => {
         <div className={styles.container}>
           {/* Logo */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
             className={styles.logo}
             onClick={scrollToTop}
             role="button"
             tabIndex={0}
             onKeyPress={(e) => e.key === 'Enter' && scrollToTop()}
           >
-            <div className={styles.logoIcon}>
-              <FaCode className={styles.logoSvg} />
+            <div className={styles.logoBadge}>
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.logoSvg}>
+                <defs>
+                  <linearGradient id="headerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#64ffda" />
+                    <stop offset="100%" stopColor="#00d2ff" />
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="40" height="40" rx="10" fill="rgba(10, 25, 47, 0.92)" stroke="url(#headerLogoGrad)" strokeWidth="1.8" />
+                <path d="M11 17 L6 22 L11 27" stroke="url(#headerLogoGrad)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M33 17 L38 22 L33 27" stroke="url(#headerLogoGrad)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                <text x="22" y="26.5" textAnchor="middle" fill="#e6f1ff" fontFamily="var(--font-mono, monospace)" fontWeight="800" fontSize="13.5" letterSpacing="-0.5">DA</text>
+              </svg>
             </div>
             <div className={styles.logoText}>
-              <span className={styles.logoName}>Daniel Ayen</span>
-              <span className={styles.logoSubtitle}>Full Stack Developer</span>
+              <span className={styles.logoName}>
+                Daniel <span className={styles.logoNameAccent}>Ayen</span>
+              </span>
+              <span className={styles.logoSubtitle}>Software Engineer</span>
             </div>
           </motion.div>
 
