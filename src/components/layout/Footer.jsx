@@ -16,7 +16,7 @@ const Footer = () => {
         <div className={styles.contactInfo}>
           <div className={styles.contactItem}>
             <FaRegEnvelope />
-            <a href="mailto:danielayen2112@gmail.com">danielayen2112@gmail.com</a>
+            <a href="mailto:dayen0938@gmail.com">dayen0938@gmail.com</a>
           </div>
           <div className={styles.contactItem}>
             <FaPhone />

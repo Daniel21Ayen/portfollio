@@ -34,7 +34,7 @@ const Header = () => {
     // { name: 'LeetCode', icon: <SiLeetcode />, url: 'https://leetcode.com/danielayen', color: '#FFA116' },
     // { name: 'HackerRank', icon: <SiHackerrank />, url: 'https://hackerrank.com/danielayen', color: '#2EC866' },
     { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/daniel-ayen-3113643b4', color: '#0077B5' },
-    { name: 'Gmail', icon: <SiGmail />, url: 'mailto:danielayen2112@gmail.com', color: '#EA4335' },
+    { name: 'Gmail', icon: <SiGmail />, url: 'mailto:dayen0938@gmail.com', color: '#EA4335' },
   ];
 
   const resumeVersions = [

@@ -38,9 +38,9 @@ const Contact = () => {
       id: 'email',
       label: 'Email',
       icon: <FaEnvelope />,
-      value: 'danielayen2112@gmail.com',
+      value: 'dayen0938@gmail.com',
       color: '#EA4335',
-      action: 'mailto:danielayen2112@gmail.com'
+      action: 'mailto:dayen0938@gmail.com'
     },
     {
       id: 'phone',
