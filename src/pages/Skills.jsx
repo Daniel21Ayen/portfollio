@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SkillIcon from '../components/common/SkillIcon';
 import {
@@ -13,7 +13,9 @@ import {
   FaUsers,
   FaJava,
   FaCalendarAlt,
-  FaLayerGroup
+  FaLayerGroup,
+  FaChevronDown,
+  FaTimes
 } from 'react-icons/fa';
 import {
   SiReact,
@@ -37,6 +39,7 @@ import styles from './Skills.module.css';
 
 const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const allSkills = useMemo(() => [
     // Frontend
@@ -68,6 +71,27 @@ const Skills = () => {
     { name: 'Figma', category: 'design', proficiency: 80, years: 2, projects: 8, icon: <SiFigma />, color: '#F24E1E', description: 'UI/UX design, interactive prototyping, design tokens, and wireframing.', relatedProjects: ['Mastara App Design', 'Garage System UI'] },
   ], []);
 
+  const categories = useMemo(() => [
+    { id: 'all', label: 'All Skills', count: allSkills.length },
+    { id: 'frontend', label: 'Frontend', count: allSkills.filter(s => s.category === 'frontend').length },
+    { id: 'backend', label: 'Backend', count: allSkills.filter(s => s.category === 'backend').length },
+    { id: 'database', label: 'Database', count: allSkills.filter(s => s.category === 'database').length },
+    { id: 'devops', label: 'DevOps & Tools', count: allSkills.filter(s => s.category === 'devops' || s.category === 'tools').length },
+    { id: 'design', label: 'Design', count: allSkills.filter(s => s.category === 'design').length }
+  ], [allSkills]);
+
+  const filteredSkills = useMemo(() => {
+    if (selectedCategory === 'all') return allSkills;
+    if (selectedCategory === 'devops') {
+      return allSkills.filter(s => s.category === 'devops' || s.category === 'tools');
+    }
+    return allSkills.filter(s => s.category === selectedCategory);
+  }, [allSkills, selectedCategory]);
+
+  const handleToggleSkill = (skill) => {
+    setActiveSkill(prev => (prev?.name === skill.name ? null : skill));
+  };
+
   return (
     <div className={styles.page}>
       {/* Hero Section */}
@@ -85,123 +109,170 @@ const Skills = () => {
 
             <p className={styles.heroSubtitle}>
               A comprehensive overview of my technical skills, proficiency levels,
-              and hands-on experience with modern technologies.
+              and hands-on experience with modern technologies. Click any card to expand its technical profile in place.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Interactive Skill Icons */}
+      {/* Interactive Skill Cards (Open on Self) */}
       <section className={styles.interactive}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Interactive Skill Visualization</h2>
+            <h2 className={styles.sectionTitle}>Interactive Skill Matrix</h2>
             <p className={styles.sectionDescription}>
-              Click on any skill icon to view technical details, proficiency, and related projects
+              Click on any skill card to expand its technical overview, key metrics, and related projects directly in place.
             </p>
           </div>
 
-          <div className={styles.interactiveGrid}>
-            {allSkills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -10 }}
-                className={styles.interactiveItem}
-                onClick={() => setActiveSkill(skill)}
+          {/* Category Filter Tabs */}
+          <div className={styles.filterContainer}>
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`${styles.filterBtn} ${selectedCategory === cat.id ? styles.active : ''}`}
+                onClick={() => setSelectedCategory(cat.id)}
               >
-                <SkillIcon
-                  skill={skill.name}
-                  level={skill.proficiency}
-                  category={skill.category}
-                  size="medium"
-                  interactive={true}
-                />
-                <span className={styles.interactiveName}>{skill.name}</span>
-              </motion.div>
+                <span>{cat.label}</span>
+                <span className={styles.filterBadge}>{cat.count}</span>
+              </button>
             ))}
+          </div>
+
+          {/* Grid with in-place expandable cards (Opens on self) */}
+          <div className={styles.interactiveGrid}>
+            {filteredSkills.map((skill, index) => {
+              const isActive = activeSkill?.name === skill.name;
+              return (
+                <motion.div
+                  key={skill.name}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: index * 0.03 }}
+                  className={`${styles.skillCard} ${isActive ? styles.skillCardActive : ''}`}
+                  style={{ '--skill-color': skill.color }}
+                >
+                  {/* Card Header: Click to expand on self */}
+                  <div
+                    className={styles.skillCardHeader}
+                    onClick={() => handleToggleSkill(skill)}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isActive}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleToggleSkill(skill);
+                      }
+                    }}
+                  >
+                    <div className={styles.cardIconWrapper}>
+                      <SkillIcon
+                        skill={skill.name}
+                        level={skill.proficiency}
+                        category={skill.category}
+                        size="medium"
+                        interactive={false}
+                      />
+                    </div>
+
+                    <div className={styles.cardHeaderInfo}>
+                      <div className={styles.cardTitleRow}>
+                        <h3 className={styles.cardSkillName}>{skill.name}</h3>
+                        <span className={styles.cardCategory}>{skill.category}</span>
+                      </div>
+
+                      <div className={styles.cardProficiencyBar}>
+                        <div
+                          className={styles.cardProficiencyFill}
+                          style={{ width: `${skill.proficiency}%`, backgroundColor: skill.color }}
+                        />
+                      </div>
+
+                      <div className={styles.cardProficiencyMeta}>
+                        <span className={styles.cardProficiencyText}>{skill.proficiency}% Proficiency</span>
+                        <span className={styles.cardExpText}>{skill.years} yrs exp</span>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`${styles.expandToggleBtn} ${isActive ? styles.expanded : ''}`}
+                      title={isActive ? "Collapse" : "Expand on self"}
+                    >
+                      <FaChevronDown />
+                    </div>
+                  </div>
+
+                  {/* Expanded detail section: Opens directly on self */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className={styles.cardExpandedContent}
+                      >
+                        <div className={styles.cardExpandedInner}>
+                          <p className={styles.cardDescription}>{skill.description}</p>
+
+                          <div className={styles.cardStatsGrid}>
+                            <div className={styles.cardStatBox}>
+                              <div className={styles.statBoxVal} style={{ color: skill.color }}>
+                                {skill.proficiency}%
+                              </div>
+                              <div className={styles.statBoxLbl}>Proficiency</div>
+                            </div>
+                            <div className={styles.cardStatBox}>
+                              <div className={styles.statBoxVal}>{skill.years} yrs</div>
+                              <div className={styles.statBoxLbl}>Experience</div>
+                            </div>
+                            <div className={styles.cardStatBox}>
+                              <div className={styles.statBoxVal}>{skill.projects}</div>
+                              <div className={styles.statBoxLbl}>Projects</div>
+                            </div>
+                          </div>
+
+                          <div className={styles.cardProjectsSection}>
+                            <h4 className={styles.projectsSectionHeading}>Related Projects</h4>
+                            <div className={styles.projectChipsContainer}>
+                              {(skill.relatedProjects || ['Various Projects']).map((projectTitle, idx) => (
+                                <Link
+                                  key={idx}
+                                  to="/projects"
+                                  className={styles.cardProjectChip}
+                                  title={`View ${projectTitle} in Projects`}
+                                >
+                                  {projectTitle}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className={styles.cardActionRow}>
+                            <button
+                              type="button"
+                              className={styles.closeCardBtn}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveSkill(null);
+                              }}
+                            >
+                              <FaTimes /> Close
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
-
-      {/* Skill Detail Modal */}
-      {activeSkill && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className={styles.modalOverlay}
-          onClick={() => setActiveSkill(null)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, y: 50 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.9, y: 50 }}
-            className={styles.modal}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={styles.modalHeader}>
-              <div className={styles.modalTitleSection}>
-                <div className={styles.modalIcon} style={{ color: activeSkill.color }}>
-                  {activeSkill.icon}
-                </div>
-                <div>
-                  <h2 className={styles.modalTitle}>{activeSkill.name}</h2>
-                  <span className={styles.modalCategory}>{activeSkill.category}</span>
-                </div>
-              </div>
-
-              <button
-                className={styles.modalClose}
-                onClick={() => setActiveSkill(null)}
-                aria-label="Close"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className={styles.modalContent}>
-              <div className={styles.skillOverview}>
-                <p className={styles.overviewDescription}>{activeSkill.description}</p>
-
-                <div className={styles.overviewStats}>
-                  <div className={styles.overviewStat}>
-                    <div className={styles.statValue}>{activeSkill.proficiency}%</div>
-                    <div className={styles.statLabel}>Proficiency</div>
-                  </div>
-                  <div className={styles.overviewStat}>
-                    <div className={styles.statValue}>{activeSkill.years}</div>
-                    <div className={styles.statLabel}>Years Experience</div>
-                  </div>
-                  <div className={styles.overviewStat}>
-                    <div className={styles.statValue}>{activeSkill.projects}</div>
-                    <div className={styles.statLabel}>Projects</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.skillDetails}>
-                <h3 className={styles.detailsTitle}>Related Projects</h3>
-                <div className={styles.relatedProjects}>
-                  {(activeSkill.relatedProjects || ['Various Projects']).map((projectTitle, index) => (
-                    <Link
-                      to="/projects"
-                      key={index}
-                      className={styles.projectChip}
-                      onClick={() => setActiveSkill(null)}
-                      title={`View ${projectTitle} in Projects`}
-                    >
-                      {projectTitle}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
 
       {/* CTA Section */}
       <section className={styles.cta}>
